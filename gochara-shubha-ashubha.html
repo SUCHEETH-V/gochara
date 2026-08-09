@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Śubha · Aśubha Gochara — Study Sheet 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#08172b;--panel:#12304f;--line:rgba(201,162,39,.28);--gold:#c9a227;--gold-lt:#e8c766;
+ --parch:#ece4d3;--dim:#a9b6c6;--block:#c94f3d;--green:#7fb069;--green-lt:#aee0b8;
+ --silver:#c0c8d0;--copper:#b87333;--iron:#6e7b87}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:radial-gradient(1200px 700px at 50% -12%,#1a3b60 0%,transparent 62%),var(--ink);
+ color:var(--parch);font-family:'Spectral',Georgia,serif;font-weight:300;line-height:1.62}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 90px}
+header.top{padding:38px 0 10px;text-align:center}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);opacity:.85}
+h1{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.04;margin:.34em 0 .18em;color:#fff}
+h1 em{font-style:normal;color:var(--gold-lt)}
+.deck{max-width:660px;margin:0 auto;font-size:clamp(1rem,2.4vw,1.15rem);color:var(--dim)}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:34px 0}
+.stage{background:linear-gradient(180deg,rgba(18,48,79,.85),rgba(9,26,44,.85));border:1px solid var(--line);border-radius:3px;padding:22px 18px 26px}
+.stage-hd{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.stage-hd h2{font-family:'Marcellus',serif;font-weight:400;font-size:1.3rem;margin:0;color:#fff}
+.hint{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.ctrl{margin-bottom:14px}
+.ctrl .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:7px}
+.row{display:flex;flex-wrap:wrap;gap:6px}
+.pbtn{font-family:'Spectral',serif;font-size:.9rem;background:transparent;color:var(--dim);
+ border:1px solid rgba(236,228,211,.2);border-radius:2px;padding:7px 12px;cursor:pointer;transition:.18s}
+.pbtn .gl{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:.78rem;margin-left:5px}
+.pbtn:hover{border-color:var(--gold);color:#fff}
+.pbtn[aria-pressed="true"]{background:var(--gold);color:#08172b;border-color:var(--gold);font-weight:600}
+.pbtn[aria-pressed="true"] .gl{color:#08172b}
+.pbtn:focus-visible{outline:2px solid var(--gold-lt);outline-offset:2px}
+.sbtn{font-size:.8rem;padding:5px 9px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr;gap:18px}}
+svg{width:100%;height:auto;display:block;touch-action:manipulation}
+.cell{cursor:pointer}.cell rect{transition:.18s}
+.cell:focus-visible rect{stroke:#fff;stroke-width:3}
+.readout{border:1px solid var(--line);border-radius:2px;padding:18px;background:rgba(8,23,43,.55);min-height:230px}
+.readout .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:9px}
+.readout h3{font-family:'Marcellus',serif;font-weight:400;font-size:1.18rem;margin:0 0 4px;color:#fff}
+.readout p{margin:.55em 0;font-size:.95rem}
+.verdict{border-left:2px solid var(--gold);padding-left:12px;margin-top:14px;color:var(--gold-lt);font-size:.93rem}
+.verdict.warn{border-left-color:var(--block);color:#f0c9c2}
+.mini{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.05em}
+section{margin-top:56px}
+h2.sec{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.5rem,3.6vw,2rem);color:#fff;margin:0 0 6px}
+.sublede{color:var(--dim);margin:0 0 22px;max-width:64ch}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{border-top:1px solid var(--line);padding-top:14px}
+.step .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.step h4{font-family:'Marcellus',serif;font-weight:400;font-size:1.08rem;color:#fff;margin:6px 0 5px}
+.step p{margin:0;font-size:.93rem;color:var(--dim)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:2px}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:.9rem}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(236,228,211,.09)}
+thead th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:rgba(18,48,79,.7);font-weight:500}
+tbody tr:last-child td{border-bottom:none}
+tbody th{font-family:'Marcellus',serif;font-weight:400;color:#fff;font-size:1rem;white-space:nowrap}
+.callout{border:1px solid var(--line);border-left:3px solid var(--gold);background:rgba(18,48,79,.5);padding:18px 20px;border-radius:2px}
+.callout.green{border-left-color:var(--green)}
+.callout.red{border-left-color:var(--block)}
+.callout h4{font-family:'Marcellus',serif;font-weight:400;color:var(--gold-lt);margin:0 0 6px;font-size:1.06rem}
+.callout.green h4{color:var(--green-lt)}
+.callout.red h4{color:#f0c9c2}
+.callout p{margin:.4em 0;font-size:.94rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.four{grid-template-columns:repeat(2,1fr)}}
+.metal{border:1px solid var(--line);border-radius:2px;overflow:hidden;background:rgba(18,48,79,.5)}
+.metal .swatch{padding:16px 12px;font-family:'Marcellus',serif;font-size:1.35rem;text-align:center}
+.metal .body{padding:13px 14px}
+.metal h5{font-family:'Marcellus',serif;font-weight:400;font-size:1.02rem;margin:0 0 5px;color:var(--gold-lt)}
+.metal p{margin:0;font-size:.87rem;color:var(--parch)}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{padding:11px 0 11px 26px;border-bottom:1px solid rgba(236,228,211,.09);position:relative;font-size:.95rem}
+ul.check li:before{content:"—";position:absolute;left:0;color:var(--gold)}
+ul.check li:last-child{border-bottom:none}
+select{font-family:'Spectral',serif;font-size:.95rem;background:#0f2743;color:var(--parch);
+ border:1px solid rgba(236,228,211,.25);border-radius:2px;padding:9px 11px;min-width:190px}
+select:focus-visible{outline:2px solid var(--gold-lt);outline-offset:2px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+@media(max-width:760px){.calc{grid-template-columns:1fr}}
+.work{font-family:'IBM Plex Mono',monospace;font-size:.87rem;color:var(--dim);line-height:2}
+.work b{color:var(--parch);font-weight:500}
+.result{border-radius:2px;padding:22px;text-align:center;margin-top:6px}
+.result .m{font-family:'Marcellus',serif;font-size:2rem;line-height:1.1}
+.result .s{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-top:6px;opacity:.8}
+.result .d{font-family:'Spectral',serif;font-size:.95rem;margin-top:12px;line-height:1.5}
+.termgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.termgrid{grid-template-columns:repeat(2,1fr)}}
+.term{border:1px solid var(--line);border-radius:2px;background:rgba(18,48,79,.5);padding:16px 14px;text-align:center}
+.term .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+ background:var(--gold);color:#08172b;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.9rem;margin-bottom:10px}
+.term h5{font-family:'Marcellus',serif;font-weight:400;font-size:1rem;color:#fff;margin:0 0 6px}
+.term p{margin:0;font-size:.84rem;color:var(--dim)}
+a.link{color:var(--gold-lt);text-decoration:underline;text-underline-offset:3px}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;
+ font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Gochara Phala · Study Sheet 02 · Topic 2 — Transit Results from Natal Moon</div>
+  <h1>Not the Lagna.<br>Not the day.<br><em>The Moon</em> is where Gochara begins.</h1>
+  <p class="deck">Every transiting graha is auspicious (<strong>Śubha</strong>) from some houses counted from your Janma Rāśi, and adverse (<strong>Aśubha</strong>) from the rest. Work the chart below rather than memorising twelve results, nine times over.</p>
+</header>
+
+<div class="rule"></div>
+
+<!-- ============ CHART MODULE ============ -->
+<div class="stage">
+  <div class="stage-hd">
+    <h2>The Gochara Chakra</h2>
+    <div class="hint">Signs fixed · houses counted clockwise from Janma Rāśi</div>
+  </div>
+
+  <div class="ctrl">
+    <span class="lbl">Janma Rāśi — where the Moon sits at birth</span>
+    <div class="row" id="rashis" role="group" aria-label="Choose the birth Moon sign"></div>
+  </div>
+  <div class="ctrl">
+    <span class="lbl">Transiting graha</span>
+    <div class="row" id="planets" role="group" aria-label="Choose a transiting planet"></div>
+  </div>
+
+  <div class="grid">
+    <div><svg viewBox="0 0 600 600" id="chart" role="img" aria-label="South Indian chart of transit houses, coloured by Shubha or Ashubha result"></svg></div>
+    <div class="readout" id="readout">
+      <span class="tag">Reading</span>
+      <h3 id="ro-title">Pick a graha</h3>
+      <p id="ro-body">Tap any highlighted square and the panel reads out that house's verdict.</p>
+      <div id="ro-verdict"></div>
+    </div>
+  </div>
+
+  <div class="tablewrap" style="margin-top:22px">
+    <table><thead><tr><th>House</th><th>Result</th><th id="th-planet">Key Effects</th></tr></thead>
+    <tbody id="planet-tbody"></tbody></table>
+  </div>
+</div>
+
+<!-- ============ RULE ============ -->
+<section>
+  <h2 class="sec">The rule, in three moves</h2>
+  <p class="sublede">Every beginner error in Gochara comes from stopping after move one.</p>
+  <div class="steps">
+    <div class="step"><div class="k">Move one</div><h4>Anchor to Janma Rāśi</h4>
+      <p>The sign occupied by the natal Moon is the Janma Rāśi; its constellation is the Janma Nakṣatra. Every house below is counted from this point — never from the Lagna.</p></div>
+    <div class="step"><div class="k">Move two</div><h4>Read the mind, not just the event</h4>
+      <p>Lagna shows what objectively happens. The Moon shows how the native subjectively experiences it — anxious success is as real a result as a quiet failure.</p></div>
+    <div class="step"><div class="k">Move three</div><h4>Sync with Daśā</h4>
+      <p>Vimśottari Daśā is calculated from the Moon's Nakṣatra. Because Gochara and Daśā share one reference point, both can be read together to time an event precisely.</p></div>
+  </div>
+</section>
+
+<!-- ============ MASTER TABLE ============ -->
+<section>
+  <h2 class="sec">One table, nine grahas</h2>
+  <p class="sublede">The houses every graha is <span style="color:var(--gold-lt)">Śubha</span> from, and the houses it is <span style="color:#f0c9c2">Aśubha</span> from — all reckoned from the Janma Rāśi.</p>
+  <div class="tablewrap">
+    <table><thead><tr><th>Graha</th><th>Śubha Gochara (auspicious)</th><th>Aśubha Gochara (in-auspicious)</th></tr></thead>
+    <tbody id="master-tbody"></tbody></table>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <h4>Worked example</h4>
+    <p>Sun is 5th-house lord, posited in the 3rd house natally. In transit, Sun sits in the 10th house from Janma Rāśi — Śubha Gochara. Lord of Progeny (5th), transiting a gainful house, may indicate an addition to the family.</p>
+  </div>
+</section>
+
+<!-- ============ MOORTHI ============ -->
+<section>
+  <h2 class="sec">Moorthi Nirnaya — the metal a graha wears</h2>
+  <p class="sublede">Even a Śubha Gochara is modified by the transiting Moon's position at the moment a graha ingresses (Graha Sankramaṇa) into a new rāśi. The mūrti it assumes sets the strength of everything it gives for that transit.</p>
+  <div class="four">
+    <div class="metal"><div class="swatch" style="background:#c9a227;color:#08172b">Gold</div>
+      <div class="body"><h5>Swarṇa Mūrti</h5><p>Very good. Houses 1, 6, 11 from Janma Rāśi.</p></div></div>
+    <div class="metal"><div class="swatch" style="background:#c0c8d0;color:#08172b">Silver</div>
+      <div class="body"><h5>Rajata Mūrti</h5><p>Good. Houses 2, 5, 9 from Janma Rāśi.</p></div></div>
+    <div class="metal"><div class="swatch" style="background:#b87333;color:#fff">Copper</div>
+      <div class="body"><h5>Tāmra Mūrti</h5><p>Average, mixed. Houses 3, 7, 10 from Janma Rāśi.</p></div></div>
+    <div class="metal"><div class="swatch" style="background:#6e7b87;color:#fff">Iron</div>
+      <div class="body"><h5>Loha Mūrti</h5><p>In-auspicious. Houses 4, 8, 12 from Janma Rāśi.</p></div></div>
+  </div>
+
+  <div class="stage" style="margin-top:22px">
+    <div class="stage-hd"><h2>Moorthi calculator</h2>
+      <div class="hint">Count from Janma Nakṣatra to the ingress nakṣatra, divide by four</div></div>
+    <div class="calc">
+      <div>
+        <div class="ctrl"><span class="lbl">Janma Nakṣatra</span>
+          <select id="jn" aria-label="Janma Nakshatra"></select></div>
+        <div class="ctrl"><span class="lbl">Rāśi the graha is entering</span>
+          <select id="ri" aria-label="Rashi entered"></select></div>
+        <div class="work" id="work"></div>
+      </div>
+      <div><div class="result" id="res"></div></div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px">
+    <h4>Worked example</h4>
+    <p>Sun (5th lord, natally in the 3rd) transits the 10th from Janma Rāśi — Śubha Gochara. But at the moment of ingress, the transiting Moon sits in the 4th from Janma Rāśi — Loha Mūrti (in-auspicious). This overrides the base result toward an in-auspicious outcome for progeny.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT'S NEXT ============ -->
+<section>
+  <h2 class="sec">Transit Under Check — what's next</h2>
+  <p class="sublede">Even a Śubha Gochara can be blocked or reversed. Topic 3 introduces the checks astrologers apply before finalising a transit verdict.</p>
+  <div class="termgrid">
+    <div class="term"><div class="num">1</div><h5>Vedha</h5><p>Obstruction — a graha in one house blocks or cancels the good result of a graha in another.</p></div>
+    <div class="term"><div class="num">2</div><h5>Vipareeta Vedha</h5><p>Reverse Vedha — the obstructing relationship works in the opposite direction, softening a bad result.</p></div>
+    <div class="term"><div class="num">3</div><h5>Nakshatra Vedha</h5><p>Obstruction reckoned by constellation (Nakṣatra) rather than by house or sign.</p></div>
+    <div class="term"><div class="num">4</div><h5>Saptha Shalakha Latta</h5><p>A supplementary seven-point check system for refining transit verdicts.</p></div>
+  </div>
+  <div class="callout green" style="margin-top:16px">
+    <h4>Continue the study</h4>
+    <p>The full interactive workthrough of Vedha, Vipareeta Vedha and Moorthi Nirnaya continues in <a class="link" href="gochara-vedha-vipareeta-moorthi.html">Study Sheet 03 — Vedha · Vipareeta Vedha · Moorthi Nirnaya</a>.</p>
+  </div>
+</section>
+
+<!-- ============ CAUTIONS ============ -->
+<section>
+  <h2 class="sec">Before you use any of this on a chart</h2>
+  <p class="sublede">These are filters, not forecasts.</p>
+  <ul class="check">
+    <li>Gochara is read from the Natal Moon (Janma Rāśi), never from the Lagna.</li>
+    <li>The Daśā–Bhukti decides whether an event is on the table at all. A transit cannot deliver what the daśā has not promised.</li>
+    <li>Check natal strength first. A debilitated graha keeps a weak promise even from a Śubha house.</li>
+    <li>Moorthi Nirnaya can upgrade or downgrade the base Śubha/Aśubha result — always check both together.</li>
+    <li>Vedha and Vipareeta Vedha (Study Sheet 03) can cancel or soften either result. Treat this table as the first filter, not the last.</li>
+    <li>These are classical generalisations. Always weigh them against the specific natal chart — lordship, house strength, and aspects.</li>
+  </ul>
+</section>
+
+<footer>
+  <span>Timing of Events by Transit · Classroom Material</span>
+  <span>Gochara · Śubha · Aśubha · Moorthi Nirnaya</span>
+</footer>
+</div>
+
+<script>
+const DATA={
+ Sun:{gl:"Ravi",houses:{
+  1:{r:"A",t:"Bad dreams, headaches, heat ailments, fatigue, quarrels with wife"},
+  2:{r:"A",t:"Eye/head afflictions, bad temper, enmity, financial loss via fines or theft"},
+  3:{r:"S",t:"Wealth flows in; charitable, courageous; cures long illness; may marry"},
+  4:{r:"A",t:"Loss of peace at home, conflicts with relatives, money/property loss"},
+  5:{r:"A",t:"Mental worry, fear of imprisonment, disease; children/wife troubled; Maraka danger"},
+  6:{r:"S",t:"Victory over enemies, financial gain, illness cured, promotion, successful travel"},
+  7:{r:"A",t:"Delayed marriage, quarrels with wife, health issues, humiliation, job demotion"},
+  8:{r:"A",t:"Danger to life, head/eye disease, Putra dosha, fines, relative's death"},
+  9:{r:"A",t:"Enmity with father, accidents, loss of status, poverty, betrayal by friends"},
+  10:{r:"S",t:"Financial improvement, success in education, fame, government support"},
+  11:{r:"S",t:"Perfect health, increased income, promotions, new vehicles, auspicious events"},
+  12:{r:"A",t:"Leg/chest/stomach pain, unwanted expenditure, forced relocation, enmity"}}},
+ Moon:{gl:"Chandra",houses:{
+  1:{r:"S",t:"Comforts, happiness, good fortune, eloquence, sharp intellect, new clothes"},
+  2:{r:"A",t:"Failures, unwanted expenditure, family sorrow, sickness to wife/children"},
+  3:{r:"S",t:"Mental peace, confidence, success in endeavors, birth of a child"},
+  4:{r:"A",t:"Loss of home comfort, theft, digestive issues, bad time for mother"},
+  5:{r:"A",t:"Children's sickness, wife's health issues, worries, wasteful expenditure"},
+  6:{r:"S",t:"Enemies pacified, gains, help from friends, fame, may acquire a house"},
+  7:{r:"S",t:"Happiness, knowledge, food/vehicle comforts, government gains, elevated status"},
+  8:{r:"A",t:"Most in-auspicious for Moon; hardship, litigation, theft; danger if Maraka + Sade Sati"},
+  9:{r:"A",t:"Imprisonment risk, agony, financial loss, humiliation, enmity, quarrels"},
+  10:{r:"S",t:"Success with government/VIP help, new job, health, respect, honor"},
+  11:{r:"S",t:"Monetary gain (waxing) or learning/success (waning); slight maternal worry"},
+  12:{r:"A",t:"Disturbed peace, forced relocation, unwanted expenditure, humiliation"}}},
+ Mars:{gl:"Kuja",houses:{
+  1:{r:"A",t:"False accusations, mental agony, wounds, eye/stomach issues, accident fears"},
+  2:{r:"A",t:"Money loss, danger to life, false accusations, quarrels, govt harassment"},
+  3:{r:"S",t:"Marriage, childbirth, improved health, gains via agriculture/real estate"},
+  4:{r:"A",t:"Calamities, blood disorders, theft/accidents, mother's illness, poverty"},
+  5:{r:"A",t:"Confusion, quarrels, danger to children's life, poverty, weak body"},
+  6:{r:"S",t:"Income flows in, enemies subdued, recovery, litigation wins, marriage/childbirth"},
+  7:{r:"A",t:"Reduced income, poverty, marital quarrels, eye/stomach issues; danger if Maraka"},
+  8:{r:"A",t:"Unresolvable problems, forced relocation, loan burden, danger to wife"},
+  9:{r:"A",t:"Loss of respect, weak body, depleted savings, father/brother's bad time"},
+  10:{r:"A",t:"Efforts fail, sickness, weapon attacks, theft, character perversion"},
+  11:{r:"S",t:"Financial progress, new property/vehicles, success, high status, awards"},
+  12:{r:"A",t:"Unwanted expenditure, forced move, fractures/accidents, low vitality"}}},
+ Mercury:{gl:"Budha",houses:{
+  1:{r:"A",t:"Confused mind, poverty, bilious disease, false accusations, aimless wandering"},
+  2:{r:"S",t:"Financial gains, successful negotiations, persuasive speech, harmonious family"},
+  3:{r:"A",t:"Enemy harassment, wasteful expenditure, forced relocation, scandal fears"},
+  4:{r:"S",t:"Sharp intellect, comfort, success in education, new vehicles, respect"},
+  5:{r:"A",t:"Wife/children's ill health, falling income, laziness, enmity, uncle's health issues"},
+  6:{r:"S",t:"High living standard, new clothes/jewels, fame, income, mental peace"},
+  7:{r:"A",t:"Disturbed home peace, wife's health decline, relative's death, deceit"},
+  8:{r:"S",t:"High living standard, mental peace, childbirth, health regained, real-estate gains"},
+  9:{r:"A",t:"Loss of discrimination, depleted savings, skin disease, enemy trouble"},
+  10:{r:"S",t:"Status/position gain, spiritual success, managerial skill, fame, income"},
+  11:{r:"S",t:"Health/finance/relationship improvement, respect, marital pleasure, childbirth"},
+  12:{r:"A",t:"Uncontrolled expenditure, joint pain/paralysis risk, business loss, marital quarrels"}}},
+ Jupiter:{gl:"Guru",houses:{
+  1:{r:"A",t:"Unwanted transfer, separation, lower intellect, job punishment, govt harassment"},
+  2:{r:"S",t:"Financial rise, improved appearance, education success, peaceful family, promotion"},
+  3:{r:"A",t:"Most in-auspicious for Jupiter; sorrow, chronic disease, loss of confidence"},
+  4:{r:"A",t:"Driven from home, property loss, false accusations, job demotion"},
+  5:{r:"S",t:"Happy family life, new vehicles/gold, fame, government job, marriage"},
+  6:{r:"A",t:"Forced relocation, punishment for others' faults, digestive disease, quarrels"},
+  7:{r:"S",t:"Pleasure, financial gain via wife, marriage, pilgrimage, foreign tours"},
+  8:{r:"A",t:"Job dismissal, humiliation, litigation, scandal, accidents, mental unrest"},
+  9:{r:"S",t:"Poorva Punya Sthana; high status, fortune, agricultural gain, parental support"},
+  10:{r:"A",t:"Job dismissal/demotion, eye disease, unfulfilled desires, family sickness"},
+  11:{r:"S",t:"Political/social status, fame, wealth, new land/vehicles, foreign travel"},
+  12:{r:"A",t:"Compulsory relocation, job loss, poverty, wounds, scandal, mental sorrow"}}},
+ Venus:{gl:"Śukra",houses:{
+  1:{r:"S",t:"Pleasures, attractive perfumes/garments, comfort, tasty food"},
+  2:{r:"S",t:"Children, financial gain, royal favor, family prosperity, gems"},
+  3:{r:"S",t:"Authority, wealth, honor, position, new clothes, defeat of enemies"},
+  4:{r:"S",t:"Friendship, power, strength, pecuniary gain, continuous happiness"},
+  5:{r:"S",t:"Favor from elders/teachers, wealth, birth of sons, happiness"},
+  6:{r:"A",t:"Most in-auspicious for Venus; humiliation, disease, mental torture, danger"},
+  7:{r:"A",t:"Disasters via young women, grief, poor wife health, no marital pleasure"},
+  8:{r:"S",t:"Houses, attendants, wealthy partner, general wealth"},
+  9:{r:"S",t:"Religious acts, happiness/gain via wife, wealth, clothes"},
+  10:{r:"A",t:"Insults, quarrels, disputes, physical pain, sorrow"},
+  11:{r:"S",t:"Friends, wealth, delicious food, perfumes, security, general profit"},
+  12:{r:"S",t:"Financial gain, wealth, garments (may later lose some)"}}},
+ Saturn:{gl:"Śani",houses:{
+  1:{r:"A",t:"Mid-Sade Sati; unbearable difficulty, mental agony, disease; danger if Maraka"},
+  2:{r:"A",t:"Final Sade Sati phase; loan burden, disease, money loss, danger to wife"},
+  3:{r:"S",t:"Excellent results; comfort, financial gain, progress and promotion"},
+  4:{r:"A",t:"Stressful; wasteful expenditure, poverty, govt harassment, paralysis/joint pain"},
+  5:{r:"A",t:"Children's disease, education disrupted, failing plans, forced low-level work"},
+  6:{r:"S",t:"Highly favorable; wealth, enemies subdued, health regained, job improvement"},
+  7:{r:"A",t:"More in-auspicious than 4th; displacement, accidents, self-respect loss"},
+  8:{r:"A",t:"Extreme troubles; stomach pain, poverty, imprisonment fear, litigation"},
+  9:{r:"A",t:"Mixed views; wasteful expenditure, mourning, blocked fortune, loss of faith"},
+  10:{r:"A",t:"Job/status loss, demotion, hard labor with little gain, humiliation"},
+  11:{r:"S",t:"Outstanding results; multi-source money, recovery, promotions, respect"},
+  12:{r:"A",t:"First Sade Sati phase; poverty, business loss, family separation, anxiety"}}},
+ Rahu:{gl:"Rāhu",houses:{
+  1:{r:"A",t:"Unsolved problems, undiagnosable disease, mental worry, black-magic risk"},
+  2:{r:"A",t:"Uncontrolled expenditure, food poisoning, loss of confidence, scandal risk"},
+  3:{r:"S",t:"Highly favorable; comfort, luxury, courage, virility, sibling support"},
+  4:{r:"A",t:"Disease, enemy difficulties, accident risk, property loss, family mourning"},
+  5:{r:"A",t:"Financial worsening, confused mind, Putra Dosha, wife's ill health"},
+  6:{r:"S",t:"Favorable; relief, money from opponents, enemies subdued, health regained"},
+  7:{r:"A",t:"Loss of self-respect, humiliation, scandal, marital quarrels, property loss"},
+  8:{r:"A",t:"Severely malefic; undiagnosable disease, fear complex; danger if Maraka + Sade Sati"},
+  9:{r:"A",t:"Poverty, friends forsake, risk of sinful acts, bad time for family"},
+  10:{r:"S",t:"Power, status, honor, financial gain, career shift or success"},
+  11:{r:"S",t:"Exceptionally good; timely food, multi-source money, wife recovers, respect"},
+  12:{r:"A",t:"Heavy expenditure, misery, disturbed married life, property loss, project failure"}}},
+ Ketu:{gl:"Ketu",houses:{
+  1:{r:"A",t:"Mental worry, smallpox-like disease, sibling enmity, fire-accident risk"},
+  2:{r:"A",t:"Enmity, untimely/tasteless food, tongue wounds, financial scarcity"},
+  3:{r:"S",t:"Excellent results; wins over enemies, income rise, Raja Yoga status"},
+  4:{r:"A",t:"Unfounded fears, speculation losses, property loss, fire/accident risk"},
+  5:{r:"A",t:"Difficulties, wife's health issues, child's health/loss grief; sharpened intellect"},
+  6:{r:"S",t:"Multi-source money, loans cleared, health regained, scholarly recognition"},
+  7:{r:"A",t:"Miseries, no marital pleasure, scandal risk, drowning danger, relative's death"},
+  8:{r:"A",t:"Highly malefic; fear complex, eye trouble, theft risk; wife stays favorable"},
+  9:{r:"A",t:"Humiliation, foul play, lawsuit loss, father's troubles; spiritual clarity"},
+  10:{r:"S",t:"Financial gain (often lost to speculation), pilgrimage, religious role"},
+  11:{r:"S",t:"Highly beneficial; success, agricultural income, VIP status, promotion"},
+  12:{r:"A",t:"Heavy expenditure, family sickness, eye/fire issues; spiritual self-realization"}}}
+};
+const RASHI=["Meṣa","Vṛṣabha","Mithuna","Karka","Siṃha","Kanyā","Tulā","Vṛścika","Dhanus","Makara","Kumbha","Mīna"];
+const CELL={1:[1,0],2:[2,0],3:[3,0],4:[3,1],5:[3,2],6:[3,3],7:[2,3],8:[1,3],9:[0,3],10:[0,2],11:[0,1],12:[0,0]};
+const NAK=["Aśvinī","Bharaṇī","Kṛttikā","Rohiṇī","Mṛgaśira","Ārdrā","Punarvasu","Puṣya","Āśleṣā","Maghā",
+ "P.Phalguṇī","U.Phalguṇī","Hasta","Chitrā","Svātī","Viśākhā","Anurādhā","Jyeṣṭhā","Mūla","P.Āṣāḍhā",
+ "U.Āṣāḍhā","Śravaṇa","Dhaniṣṭhā","Śatabhiṣā","P.Bhādrapadā","U.Bhādrapadā","Revatī"];
+const THRESH={1:1,2:3,3:5,4:7,5:10,6:11,7:14,8:16,9:19,10:20,11:23,12:25};
+const MURTI={1:["Swarṇa Mūrti","Gold","#c9a227","#08172b","Very good. What the house promises arrives with strength and ease."],
+ 2:["Rajata Mūrti","Silver","#c0c8d0","#08172b","Good, but reduced. The result comes — after effort, or later than expected."],
+ 3:["Tāmra Mūrti","Copper","#b87333","#ffffff","Mixed and ordinary. Gain mingled with strain; the result is partial at best."],
+ 0:["Loha Mūrti","Iron","#6e7b87","#ffffff","In-auspicious. The graha gives difficulty even from an otherwise Śubha house."]};
+
+const S=150,NS="http://www.w3.org/2000/svg";
+const svg=document.getElementById("chart");
+let planet="Sun",janma=1;
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const ord=n=>n+(["th","st","nd","rd"][n%10>3||(n>10&&n<14)?0:n%10]||"th");
+const houseOf=r=>((r-janma+12)%12)+1;
+
+function build(){
+  svg.innerHTML="";
+  const defs=el("defs");
+  defs.innerHTML='<filter id="gg" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+  svg.appendChild(defs);
+  svg.appendChild(el("rect",{x:S,y:S,width:S*2,height:S*2,fill:"rgba(8,23,43,.6)",stroke:"rgba(201,162,39,.22)"}));
+  for(let r=1;r<=12;r++){
+    const[c,ro]=CELL[r],x=c*S,y=ro*S;
+    const g=el("g",{class:"cell",id:"c"+r,tabindex:"0",role:"button"});
+    g.appendChild(el("rect",{x,y,width:S,height:S,fill:"#0f2743",stroke:"rgba(236,228,211,.2)","stroke-width":1.4}));
+    const rn=el("text",{x:x+10,y:y+21,fill:"#a9b6c6","font-family":"IBM Plex Mono,monospace","font-size":"12"});
+    rn.textContent=RASHI[r-1];rn.setAttribute("class","rn");g.appendChild(rn);
+    const hn=el("text",{x:x+S/2,y:y+S/2+10,"text-anchor":"middle",fill:"#a9b6c6","font-family":"Marcellus,serif","font-size":"36"});
+    hn.setAttribute("class","hn");g.appendChild(hn);
+    const hl=el("text",{x:x+S/2,y:y+S-18,"text-anchor":"middle",fill:"#7f8ea1","font-family":"IBM Plex Mono,monospace","font-size":"9.5","letter-spacing":"1.6"});
+    hl.setAttribute("class","hl");g.appendChild(hl);
+    const jm=el("text",{x:x+S-10,y:y+21,"text-anchor":"end",fill:"var(--gold-lt)","font-family":"IBM Plex Mono,monospace","font-size":"9","letter-spacing":"1"});
+    jm.setAttribute("class","jm");g.appendChild(jm);
+    g.addEventListener("click",()=>pick(r));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(r)}});
+    svg.appendChild(g);
+  }
+  ["ctrA","ctrB","ctrC"].forEach((id,i)=>{
+    const t=el("text",{x:300,y:[284,312,344][i],"text-anchor":"middle",id:id,
+      fill:["#e8c766","#a9b6c6","#7f8ea1"][i],
+      "font-family":i?"IBM Plex Mono,monospace":"Marcellus,serif",
+      "font-size":[24,11,10][i],"letter-spacing":i?"2":"0"});
+    svg.appendChild(t);
+  });
+}
+
+function paint(){
+  const d=DATA[planet];
+  for(let r=1;r<=12;r++){
+    const g=document.getElementById("c"+r),rect=g.querySelector("rect"),h=houseOf(r),info=d.houses[h];
+    const isS=info.r==="S";
+    g.setAttribute("aria-label",RASHI[r-1]+", house "+h+" from the Moon, "+(isS?"Śubha":"Aśubha"));
+    rect.setAttribute("fill", isS ? "#c9a227" : "rgba(201,79,61,.32)");
+    rect.setAttribute("stroke", isS ? "#e8c766" : "var(--block)");
+    rect.setAttribute("stroke-width", 1.6);
+    rect.removeAttribute("filter");
+    const hn=g.querySelector(".hn"),rn=g.querySelector(".rn"),hl=g.querySelector(".hl"),jm=g.querySelector(".jm");
+    hn.textContent=h;
+    hn.setAttribute("fill", isS ? "#08172b" : "#f0c9c2");
+    rn.setAttribute("fill", isS ? "rgba(8,23,43,.75)" : "#c9a9a5");
+    hl.setAttribute("fill", isS ? "rgba(8,23,43,.65)" : "#f0c9c2");
+    hl.textContent = isS ? "ŚUBHA" : "AŚUBHA";
+    jm.textContent = r===janma ? "JANMA" : "";
+  }
+  document.getElementById("ctrA").textContent=planet+" · "+d.gl;
+  document.getElementById("ctrB").textContent="MOON IN "+RASHI[janma-1].toUpperCase();
+  document.getElementById("ctrC").textContent="GOLD = ŚUBHA · ROSE = AŚUBHA";
+}
+
+function pick(r){
+  const d=DATA[planet],h=houseOf(r),info=d.houses[h],isS=info.r==="S";
+  paint();
+  document.getElementById("c"+r).querySelector("rect").setAttribute("filter","url(#gg)");
+  document.getElementById("ro-title").textContent=planet+" in "+RASHI[r-1]+" — the "+ord(h)+" from the Moon";
+  document.getElementById("ro-body").innerHTML="<span class='mini'>"+(isS?"ŚUBHA GOCHARA":"AŚUBHA GOCHARA")+"</span><br>"+info.t;
+  const V=document.getElementById("ro-verdict");
+  V.innerHTML = isS
+    ? "<div class='verdict'><strong>Auspicious.</strong> "+planet+" supports whatever house it rules and occupies in this transit. Also check Moorthi Nirnaya below before finalising.</div>"
+    : "<div class='verdict warn'><strong>In-auspicious.</strong> Expect strain around the significations above. A well-placed Vedha (Study Sheet 03) may soften this.</div>";
+  highlightRow(h);
+}
+
+function fillPlanetTable(){
+  const d=DATA[planet],tb=document.getElementById("planet-tbody");
+  document.getElementById("th-planet").textContent="Key Effects — "+planet+" ("+d.gl+")";
+  tb.innerHTML="";
+  for(let h=1;h<=12;h++){
+    const info=d.houses[h],isS=info.r==="S";
+    const tr=document.createElement("tr");
+    tr.id="row-h"+h;
+    tr.innerHTML="<th scope='row' style='color:#fff'>"+h+"</th>"+
+      "<td style='color:"+(isS?"var(--gold-lt)":"#f0c9c2")+";font-weight:600'>"+(isS?"Śubha":"Aśubha")+"</td>"+
+      "<td>"+info.t+"</td>";
+    tb.appendChild(tr);
+  }
+}
+function highlightRow(h){
+  document.querySelectorAll("#planet-tbody tr").forEach(tr=>tr.style.background="");
+  const row=document.getElementById("row-h"+h);
+  if(row) row.style.background="rgba(201,162,39,.12)";
+}
+
+function setPlanet(p){
+  planet=p;
+  document.querySelectorAll("#planets .pbtn").forEach(b=>b.setAttribute("aria-pressed",b.dataset.p===p));
+  paint();
+  fillPlanetTable();
+  const d=DATA[p];
+  const good=Object.keys(d.houses).filter(h=>d.houses[h].r==="S");
+  const bad=Object.keys(d.houses).filter(h=>d.houses[h].r==="A");
+  document.getElementById("ro-title").textContent=p+" · "+d.gl;
+  document.getElementById("ro-body").innerHTML="Śubha from houses <strong style='color:#e8c766'>"+good.join(", ")+"</strong>, Aśubha from <strong style='color:#f0c9c2'>"+bad.join(", ")+"</strong> — counted from the Moon in "+RASHI[janma-1]+". <span class='mini'>Tap any square.</span>";
+  document.getElementById("ro-verdict").innerHTML="";
+}
+function setJanma(j){
+  janma=j;
+  document.querySelectorAll("#rashis .pbtn").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===j));
+  setPlanet(planet);
+}
+
+/* controls */
+const rw=document.getElementById("rashis");
+RASHI.forEach((n,i)=>{const b=document.createElement("button");
+  b.className="pbtn sbtn";b.dataset.r=i+1;b.setAttribute("aria-pressed","false");b.textContent=n;
+  b.onclick=()=>setJanma(i+1);rw.appendChild(b);});
+const pw=document.getElementById("planets"),mtb=document.getElementById("master-tbody");
+Object.keys(DATA).forEach(k=>{
+  const b=document.createElement("button");
+  b.className="pbtn";b.dataset.p=k;b.setAttribute("aria-pressed","false");
+  b.innerHTML=k+"<span class='gl'>"+DATA[k].gl+"</span>";
+  b.onclick=()=>setPlanet(k);pw.appendChild(b);
+  const good=[],bad=[];
+  for(let h=1;h<=12;h++){ (DATA[k].houses[h].r==="S"?good:bad).push(h); }
+  const tr=document.createElement("tr");
+  tr.innerHTML="<th scope='row'>"+k+" <span style='color:#c9a227;font-family:IBM Plex Mono,monospace;font-size:.72rem'>"+DATA[k].gl+"</span></th>"+
+    "<td style='color:#e8c766'>"+good.join(", ")+"</td>"+
+    "<td style='color:#f0c9c2'>"+bad.join(", ")+"</td>";
+  mtb.appendChild(tr);
+});
+
+/* moorthi calculator */
+const jn=document.getElementById("jn"),ri=document.getElementById("ri");
+NAK.forEach((n,i)=>{const o=document.createElement("option");o.value=i+1;o.textContent=(i+1)+".  "+n;jn.appendChild(o)});
+RASHI.forEach((n,i)=>{const o=document.createElement("option");o.value=i+1;o.textContent=n;ri.appendChild(o)});
+jn.value=4; ri.value=11;
+function calcMurti(){
+  const j=+jn.value, r=+ri.value, t=THRESH[r];
+  const count=((t-j+27)%27)+1;
+  const rem=count%4;
+  const m=MURTI[rem];
+  document.getElementById("work").innerHTML=
+    "Janma Nakṣatra &nbsp; <b>"+NAK[j-1]+" ("+j+")</b><br>"+
+    "Ingress nakṣatra &nbsp; <b>"+NAK[t-1]+" ("+t+")</b><br>"+
+    "Count "+j+" → "+t+" inclusive &nbsp; = &nbsp; <b>"+count+"</b><br>"+
+    count+" ÷ 4 &nbsp; = &nbsp; "+Math.floor(count/4)+" remainder <b>"+rem+"</b>";
+  const res=document.getElementById("res");
+  res.style.background=m[2]; res.style.color=m[3];
+  res.innerHTML="<div class='m'>"+m[0]+"</div><div class='s'>"+m[1]+"</div><div class='d'>"+m[4]+"</div>";
+}
+jn.onchange=calcMurti; ri.onchange=calcMurti;
+
+build(); setJanma(1); calcMurti();
+</script>
+</body>
+</html>
