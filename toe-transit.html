@@ -3,73 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Timing of Events by Transit — ICAS Bangalore-2</title>
+<title>Transit Under Check — ICAS Bangalore-2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
  --parch:#f5eddd; --panel:#ebdfc8; --panel2:#e3d4b8; --cream:#fbf6ec;
  --ink:#2a1e14; --dim:#6e5f4a; --rule:#d5c3a4;
  --indigo:#273a63; --verm:#a83228; --ochre:#b87a22; --sage:#4a7350;
+ --silver:#9aa3ac; --copper:#b0703a; --iron:#5f6b75;
 }
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--parch);color:var(--ink);font-family:'Spectral',Georgia,serif;font-weight:400;line-height:1.62}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px 90px}
-.edge{position:fixed;left:0;top:0;bottom:0;width:14px;background:var(--indigo)}
-@media(max-width:700px){.edge{width:7px}}
-header.top{padding:44px 0 10px}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--verm);font-weight:600}
-h1{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:clamp(2.2rem,6.5vw,3.9rem);line-height:1.05;margin:.3em 0 .2em;color:var(--indigo)}
-.deck{max-width:640px;font-size:clamp(1rem,2.3vw,1.14rem);color:var(--dim)}
-.hr{height:2px;background:var(--ochre);width:180px;margin:26px 0}
-.stage{background:var(--panel);border:1px solid var(--rule);padding:22px 18px 26px;margin-top:10px}
+body{margin:0;background:var(--parch);color:var(--ink);
+ font-family:'Spectral',Georgia,serif;font-weight:400;line-height:1.62}
+.edge{position:fixed;left:0;top:0;bottom:0;width:12px;background:var(--indigo);z-index:5}
+@media(max-width:700px){.edge{width:6px}}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px 90px 30px}
+header.top{padding:46px 0 8px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.24em;
+ text-transform:uppercase;color:var(--verm);font-weight:600}
+h1{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:clamp(2.3rem,7vw,4rem);
+ line-height:1.02;margin:.28em 0 .1em;color:var(--indigo)}
+.hr{height:2px;background:var(--ochre);width:190px;margin:22px 0}
+.deck{max-width:660px;font-size:clamp(1rem,2.3vw,1.15rem);color:var(--dim)}
+section{margin-top:54px}
+h2.sec{font-family:'Gentium Book Plus',serif;font-weight:400;
+ font-size:clamp(1.5rem,3.6vw,2.05rem);color:var(--indigo);margin:0 0 6px}
+.sublede{color:var(--dim);margin:0 0 20px;max-width:66ch;font-style:italic}
+.stage{background:var(--panel);border:1px solid var(--rule);padding:20px 18px 24px}
 .stage-hd{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-.stage-hd h2{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1.32rem;margin:0;color:var(--indigo)}
+.stage-hd h3{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1.3rem;margin:0;color:var(--indigo)}
 .hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
-.ctrl{margin-bottom:14px}
-.ctrl .lbl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--verm);font-weight:600;display:block;margin-bottom:7px}
+.ctrl{margin-bottom:13px}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+ color:var(--verm);font-weight:600;display:block;margin-bottom:7px}
 .row{display:flex;flex-wrap:wrap;gap:6px}
-.pbtn{font-family:'Spectral',serif;font-size:.9rem;background:var(--cream);color:var(--dim);
+.btn{font-family:'Spectral',serif;font-size:.9rem;background:var(--cream);color:var(--dim);
  border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.16s}
-.pbtn:hover{border-color:var(--indigo);color:var(--ink)}
-.pbtn[aria-pressed="true"]{background:var(--indigo);color:var(--cream);border-color:var(--indigo);font-weight:600}
-.pbtn:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.sbtn{font-size:.8rem;padding:5px 9px}
-.mode .pbtn[data-m="vedha"][aria-pressed="true"]{background:var(--ochre);border-color:#8f5d14}
-.mode .pbtn[data-m="vip"][aria-pressed="true"]{background:var(--sage);border-color:#3a5c3f}
-.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
-@media(max-width:880px){.grid{grid-template-columns:1fr;gap:18px}}
-.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.charts.single{grid-template-columns:1fr}
-@media(max-width:520px){.charts{grid-template-columns:1fr}}
+.btn:hover{border-color:var(--indigo);color:var(--ink)}
+.btn[aria-pressed="true"]{background:var(--indigo);color:var(--cream);border-color:var(--indigo);font-weight:600}
+.btn:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.sm{font-size:.8rem;padding:5px 9px}
+.mode .btn[data-m="vedha"][aria-pressed="true"]{background:var(--ochre);border-color:#8f5d14}
+.mode .btn[data-m="vip"][aria-pressed="true"]{background:var(--sage);border-color:#3a5c3f}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.charts{display:grid;gap:14px}
+.charts.two{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.charts.two{grid-template-columns:1fr}}
 svg{width:100%;height:auto;display:block;touch-action:manipulation}
-.cap{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;text-align:center;margin-top:7px;color:var(--verm);font-weight:600}
+.cap{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+ text-align:center;margin-top:7px;color:var(--verm);font-weight:600}
 .cap.g{color:var(--sage)}
 .cell{cursor:pointer}.cell rect{transition:.16s}
 .cell:focus-visible rect{stroke:var(--indigo);stroke-width:3}
-.readout{border:1px solid var(--rule);background:var(--cream);padding:18px;min-height:240px}
-.readout .tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--verm);font-weight:600;display:block;margin-bottom:9px}
-.readout h3{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1.16rem;margin:0 0 4px;color:var(--indigo)}
-.readout p{margin:.55em 0;font-size:.95rem}
+.readout{border:1px solid var(--rule);background:var(--cream);padding:18px;min-height:250px}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+ color:var(--verm);font-weight:600;display:block;margin-bottom:8px}
+.readout h4{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1.15rem;margin:0 0 4px;color:var(--indigo)}
+.readout p{margin:.5em 0;font-size:.95rem}
 .verdict{border-left:3px solid var(--verm);padding-left:12px;margin-top:14px;color:var(--verm);font-size:.93rem}
 .verdict.relief{border-left-color:var(--sage);color:var(--sage)}
-.mini{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--dim);letter-spacing:.05em}
-section{margin-top:56px}
-h2.sec{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:clamp(1.5rem,3.6vw,2rem);color:var(--indigo);margin:0 0 6px}
-.sublede{color:var(--dim);margin:0 0 22px;max-width:66ch;font-style:italic}
+.mini{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--dim)}
 .tablewrap{overflow-x:auto;border:1px solid var(--rule)}
-table{border-collapse:collapse;width:100%;min-width:580px;font-size:.92rem;background:var(--cream)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem;background:var(--cream)}
 th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule)}
-thead th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--verm);background:var(--panel2);font-weight:600}
-tbody tr:last-child td{border-bottom:none}
+thead th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--verm);background:var(--panel2);font-weight:600}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
 tbody th{font-family:'Gentium Book Plus',serif;font-weight:400;color:var(--indigo);font-size:1.02rem;white-space:nowrap;border-bottom:1px solid var(--rule)}
 .num{font-family:'IBM Plex Mono',monospace;font-size:.86rem;font-weight:600}
 .good{color:#8f5d14}.bad{color:var(--verm)}.rel{color:var(--sage)}
-.callout{border:1px solid var(--rule);border-left:4px solid var(--indigo);background:var(--panel);padding:18px 20px}
+.callout{border:1px solid var(--rule);border-left:4px solid var(--indigo);background:var(--panel);padding:17px 19px}
 .callout.v{border-left-color:var(--verm)}
 .callout.g{border-left-color:var(--sage)}
-.callout h4{font-family:'Gentium Book Plus',serif;font-weight:400;color:var(--indigo);margin:0 0 6px;font-size:1.1rem}
+.callout h4{font-family:'Gentium Book Plus',serif;font-weight:400;color:var(--indigo);margin:0 0 6px;font-size:1.08rem}
 .callout.v h4{color:var(--verm)}.callout.g h4{color:var(--sage)}
 .callout p{margin:.4em 0;font-size:.94rem}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -77,28 +86,29 @@ tbody th{font-family:'Gentium Book Plus',serif;font-weight:400;color:var(--indig
 .four{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:820px){.four{grid-template-columns:repeat(2,1fr)}}
 .metal{border:1px solid var(--rule);overflow:hidden;background:var(--cream)}
-.metal .sw{padding:16px 12px;font-family:'Gentium Book Plus',serif;font-size:1.3rem;text-align:center}
-.metal .bd{padding:13px 14px}
-.metal h5{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1rem;margin:0 0 5px;color:var(--indigo)}
+.metal .sw{padding:15px 12px;font-family:'Gentium Book Plus',serif;font-size:1.22rem;text-align:center;color:var(--cream)}
+.metal .bd{padding:12px 13px}
+.metal h5{font-family:'Gentium Book Plus',serif;font-weight:400;font-size:1rem;margin:0 0 4px;color:var(--indigo)}
 .metal p{margin:0;font-size:.86rem}
+select{font-family:'Spectral',serif;font-size:.95rem;background:var(--cream);color:var(--ink);
+ border:1px solid var(--rule);padding:9px 11px;width:100%;max-width:260px}
+select:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+@media(max-width:760px){.calc{grid-template-columns:1fr}}
+.work{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--dim);line-height:1.95;margin-top:6px}
+.work b{color:var(--ink)}
+.result{padding:22px;text-align:center;border:1px solid var(--rule);color:var(--cream)}
+.result .m{font-family:'Gentium Book Plus',serif;font-size:1.85rem;line-height:1.1}
+.result .s{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:6px;opacity:.85}
+.result .d{font-size:.95rem;margin-top:11px;line-height:1.45}
 ul.check{list-style:none;padding:0;margin:0}
 ul.check li{padding:11px 0 11px 26px;border-bottom:1px solid var(--rule);position:relative;font-size:.95rem}
 ul.check li:before{content:"—";position:absolute;left:0;color:var(--ochre)}
 ul.check li:last-child{border-bottom:none}
-select{font-family:'Spectral',serif;font-size:.95rem;background:var(--cream);color:var(--ink);
- border:1px solid var(--rule);padding:9px 11px;min-width:200px}
-select:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
-@media(max-width:760px){.calc{grid-template-columns:1fr}}
-.work{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--dim);line-height:2}
-.work b{color:var(--ink)}
-.result{padding:22px;text-align:center;border:1px solid var(--rule)}
-.result .m{font-family:'Gentium Book Plus',serif;font-size:1.9rem;line-height:1.1}
-.result .s{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;margin-top:6px;opacity:.85}
-.result .d{font-family:'Spectral',serif;font-size:.94rem;margin-top:12px;line-height:1.5}
-footer{margin-top:64px;padding-top:22px;border-top:2px solid var(--indigo);font-family:'IBM Plex Mono',monospace;
- font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+footer{margin-top:60px;padding-top:20px;border-top:2px solid var(--indigo);
+ font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--dim);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
@@ -107,203 +117,176 @@ footer{margin-top:64px;padding-top:22px;border-top:2px solid var(--indigo);font-
 
 <header class="top">
   <div class="eyebrow">Indian Council of Astrological Sciences · Bangalore-2</div>
-  <h1>Timing of Events<br>by Transit</h1>
+  <h1>Transit<br>Under Check</h1>
   <div class="hr"></div>
-  <p class="deck"><strong>Vedha · Vipareetha Vedha · Nakshatra Vedha · Moorthi Nirnaya.</strong> Four filters stand between a transit and its result. The one students get wrong is the second — because the reference point changes.</p>
+  <p class="deck"><strong>Vedha · Vipareetha Vedha · Nakshatra Vedha · Moorthy Nirnaya.</strong> Four checks stand between a transit and its result — and they are not all counted from the same place.</p>
 </header>
 
-<!-- ============ CHART MODULE ============ -->
-<div class="stage">
-  <div class="stage-hd">
-    <h2>The Gochara Chakra</h2>
-    <div class="hint">Dakshina Kundali · signs fixed, numbers move</div>
+<section>
+  <h2 class="sec">Four checks, and the reference point for each</h2>
+  <p class="sublede">The part students get wrong is not the tables. It is which square you start counting from.</p>
+  <div class="tablewrap">
+    <table><thead><tr><th>Check</th><th>What it does</th><th>Reckoned from</th></tr></thead>
+    <tbody>
+      <tr><th>Shubha / Ashubha Gochara</th><td>Decides whether the transit is auspicious or in-auspicious at all</td><td>Natal Moon</td></tr>
+      <tr><th>Vedha</th><td>Obstructs an auspicious result</td><td>Natal Moon</td></tr>
+      <tr><th>Vipareetha Vedha</th><td>Nullifies an in-auspicious result</td><td class="bad"><strong>The transiting planet itself</strong></td></tr>
+      <tr><th>Nakshatra Vedha</th><td>Cancels the result by star, and only by specified planets</td><td class="bad"><strong>The planet's own Nakshatra</strong></td></tr>
+      <tr><th>Moorthy Nirnaya</th><td>Modifies the quality of the whole transit</td><td class="bad"><strong>Transit Moon from Natal Moon, at ingress</strong></td></tr>
+    </tbody></table>
   </div>
+</section>
 
-  <div class="ctrl">
-    <span class="lbl">Filter</span>
-    <div class="row mode" id="modes" role="group" aria-label="Choose filter">
-      <button class="pbtn" data-m="vedha" aria-pressed="true">Vedha — an auspicious result is obstructed</button>
-      <button class="pbtn" data-m="vip" aria-pressed="false">Vipareetha Vedha — an in-auspicious result is nullified</button>
-    </div>
-  </div>
-  <div class="ctrl">
-    <span class="lbl">Janma Rashi — the Moon's birth sign</span>
-    <div class="row" id="rashis" role="group" aria-label="Choose the birth Moon sign"></div>
-  </div>
-  <div class="ctrl">
-    <span class="lbl">Transiting graha</span>
-    <div class="row" id="planets" role="group" aria-label="Choose a transiting planet"></div>
-  </div>
-
-  <div class="grid">
-    <div>
-      <div class="charts" id="charts">
-        <div><svg viewBox="0 0 600 600" id="chartA" role="img"></svg><div class="cap" id="capA"></div></div>
-        <div id="wrapB"><svg viewBox="0 0 600 600" id="chartB" role="img"></svg><div class="cap g" id="capB"></div></div>
+<!-- ===== CHAKRA ===== -->
+<section>
+  <h2 class="sec">The Gochara Chakra</h2>
+  <p class="sublede">Switch the filter and watch the reference point change. In Vipareetha mode a second chart appears, renumbered from the transiting planet.</p>
+  <div class="stage">
+    <div class="stage-hd"><h3>Dakshina Kundali</h3><div class="hint">Signs fixed · numbers move</div></div>
+    <div class="ctrl"><span class="lbl">Filter</span>
+      <div class="row mode" id="modes">
+        <button class="btn" data-m="vedha" aria-pressed="true">Vedha — an auspicious result is obstructed</button>
+        <button class="btn" data-m="vip" aria-pressed="false">Vipareetha Vedha — an in-auspicious result is nullified</button>
       </div>
     </div>
-    <div class="readout" id="readout">
-      <span class="tag">Reading</span>
-      <h3 id="ro-title">Pick a graha</h3>
-      <p id="ro-body">Tap a highlighted square in the left chart.</p>
-      <div id="ro-verdict"></div>
+    <div class="ctrl"><span class="lbl">Janma Rashi</span><div class="row" id="rashis"></div></div>
+    <div class="ctrl"><span class="lbl">Transiting planet</span><div class="row" id="planets"></div></div>
+    <div class="grid">
+      <div>
+        <div class="charts" id="charts">
+          <div><svg viewBox="0 0 600 600" id="cA" role="img" aria-label="Chart counted from Janma Rashi"></svg><div class="cap" id="capA"></div></div>
+          <div id="wrapB"><svg viewBox="0 0 600 600" id="cB" role="img" aria-label="Chart renumbered from the transiting planet"></svg><div class="cap g" id="capB"></div></div>
+        </div>
+      </div>
+      <div class="readout">
+        <span class="tag">Reading</span>
+        <h4 id="roT">Pick a planet</h4>
+        <p id="roB">Tap a highlighted square in the first chart.</p>
+        <div id="roV"></div>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- ============ SHUBHA/ASHUBHA ============ -->
-<section>
-  <h2 class="sec">Where every judgement begins</h2>
-  <p class="sublede">Shubha and Ashubha Gochara positions, reckoned from Janma Rashi. If the graha is in a shubha house, ask about Vedha. If it is in an ashubha house, ask about Vipareetha Vedha.</p>
-  <div class="tablewrap">
-    <table><thead><tr><th>Transiting graha</th><th>Auspicious (Shubha Gochara)</th><th>In-auspicious (Ashubha Gochara)</th></tr></thead>
-    <tbody id="tgochara"></tbody></table>
-  </div>
 </section>
 
-<!-- ============ VEDHA ============ -->
+<!-- ===== VEDHA ===== -->
 <section>
-  <h2 class="sec">Vedha — obstruction of the free flow of results</h2>
-  <p class="sublede">A graha transiting certain houses gives auspicious results. Those results are obstructed by some other graha transiting at some other place. Both houses are counted from the Natal Moon.</p>
+  <h2 class="sec">Vedha</h2>
+  <p class="sublede">Vedha means obstruction of free flow of results. Planets while transiting in certain houses give auspicious results. These auspicious results are obstructed by some other planet transiting at some other place. Like Shubha Gochara, Vedha positions are also considered from the Natal Moon.</p>
   <div class="tablewrap">
-    <table><thead><tr><th>Graha</th><th>Auspicious transit</th><th>Vedha position</th></tr></thead>
-    <tbody id="tvedha"></tbody></table>
+    <table><thead><tr><th>Transiting planet</th><th>Auspicious transit</th><th>Vedha positions</th></tr></thead>
+    <tbody id="tV"></tbody></table>
   </div>
-  <div class="two" style="margin-top:18px">
-    <div class="callout"><h4>Two exemptions</h4>
-      <p>The Sun does not suffer Vedha due to Saturn, and vice versa. The Moon does not suffer Vedha due to Mercury, and vice versa. Any <em>other</em> graha in that house still obstructs — the exemption belongs to the pair, not the house.</p></div>
+  <div class="two" style="margin-top:16px">
+    <div class="callout v"><h4>Exemptions</h4>
+      <p>Sun does not suffer Vedha due to Saturn, and vice versa. Moon does not suffer Vedha due to Mercury, and vice versa. Any <em>other</em> planet in that house still obstructs.</p></div>
     <div class="callout"><h4>Memory hooks</h4>
-      <p>Mars and Saturn have identical tables. Rahu and Ketu follow the Sun exactly. Vedha is occupancy — a graha physically standing in that house. Not aspect, not lordship.</p></div>
+      <p>Mars and Saturn are identical. Rahu / Ketu follow the Sun exactly. Vedha is occupancy — never aspect, never lordship.</p></div>
   </div>
-  <p class="mini" style="margin-top:12px">Source: Phaladeepika</p>
+  <p class="mini" style="margin-top:10px">Source : Phaladeepika</p>
 </section>
 
-<!-- ============ VIPAREETHA ============ -->
+<!-- ===== VIPAREETHA ===== -->
 <section>
-  <h2 class="sec">Vipareetha Vedha — the reference point changes</h2>
-  <p class="sublede">This is the single most common error in the whole topic. The ashubha position is counted from the Moon; the nullifying position is counted from the transiting graha itself.</p>
+  <h2 class="sec">Vipareetha Vedha</h2>
+  <p class="sublede">The obstruction of in-auspicious results of a transiting planet in Ashubha Gochara by some other transiting planet at some other place. The native will not experience the in-auspicious results, as they are nullified.</p>
   <div class="two">
-    <div class="callout v"><h4>Ashubha Gochara position — from the Natal Moon</h4>
-      <p>Where the graha stands relative to Janma Rashi tells you whether it threatens an in-auspicious result at all.</p>
-      <p class="mini" style="color:var(--verm);font-size:.95rem">Shani in the 12th from the Moon → ashubha</p></div>
-    <div class="callout g"><h4>Vipareetha Vedha position — from the transiting graha</h4>
-      <p>Now stop counting from the Moon. Take the rashi the afflicting graha itself occupies as house 1, and count from there.</p>
-      <p class="mini" style="color:var(--sage);font-size:.95rem">3rd, 6th or 11th from Shani → relief</p></div>
+    <div class="callout v"><h4>Ashubha Gochara position</h4>
+      <p>Reckoned from the <strong>Natal Moon</strong>. Tells you whether an in-auspicious result is threatened at all.</p></div>
+    <div class="callout g"><h4>Vipareetha Vedha position</h4>
+      <p>Reckoned from the <strong>transiting planet itself</strong>. Take the Rashi that planet occupies as house 1, and count from there.</p></div>
   </div>
-  <div class="tablewrap" style="margin-top:18px">
-    <table><thead><tr><th>Graha</th><th>In-auspicious transit · from Janma Rashi</th><th>Vipareetha Vedha · from the transiting graha</th></tr></thead>
-    <tbody id="tvip"></tbody></table>
+  <div class="tablewrap" style="margin-top:16px">
+    <table><thead><tr><th>Transiting planet</th><th>In-auspicious transit · from Janma Rashi</th><th>Vipareetha Vedha · from the transiting planet</th></tr></thead>
+    <tbody id="tP"></tbody></table>
   </div>
-  <div class="callout g" style="margin-top:18px">
-    <h4>How to read it</h4>
-    <p>If the graha occupies one of its in-auspicious houses from the Moon, and any other transiting graha occupies one of the vipareetha vedha houses <em>counted from that graha</em>, the native does not experience the in-auspicious result.</p>
-    <p>Use the Vipareetha filter in the chakra above — it draws both charts side by side so the renumbering is visible.</p>
-  </div>
-  <p class="mini" style="margin-top:12px">Source: Laws of Nature</p>
+  <p class="mini" style="margin-top:10px">Source : Laws of Nature</p>
 </section>
 
-<!-- ============ NAKSHATRA VEDHA ============ -->
+<!-- ===== NAKSHATRA VEDHA ===== -->
 <section>
-  <h2 class="sec">Nakshatra Vedha — cancellation by star</h2>
-  <p class="sublede">The results of a graha transiting the 27 nakshatras get cancelled by some other graha occupying certain specified nakshatras, counted from the nakshatra the first graha occupies.</p>
+  <h2 class="sec">Nakshatra Vedha</h2>
+  <p class="sublede">The results of planets during their transit through the 27 Nakshatras get cancelled by some other planet occupying certain specified Nakshatras, considered from specified positions.</p>
   <div class="tablewrap">
-    <table><thead><tr><th>Graha in transit</th><th>Vedha nakshatras · counted from it</th><th>Vedha-causing grahas</th></tr></thead>
-    <tbody id="tnak"></tbody></table>
+    <table><thead><tr><th>Planet</th><th>Vedha transits in Nakshatras</th><th>Vedha causing planets</th></tr></thead>
+    <tbody id="tN"></tbody></table>
   </div>
-  <div class="callout" style="margin-top:18px">
-    <h4>Worked example — the Moon in Ashwini</h4>
-    <p>Count from Ashwini. The 7th nakshatra is Punarvasu; the 12th is Uttara Phalguni. If Mars moves into Punarvasu, or the Sun into Uttara Phalguni, the good effects expected from the Moon's transit of Ashwini are nullified.</p>
-    <p>Note that the vedha-causing graha is specified. Any graha will not do — for the Moon it must be Mars or the Sun.</p>
+  <div class="callout" style="margin-top:16px">
+    <h4>Example — the Moon in Ashwini</h4>
+    <p>Counting from Ashwini, the 7th Nakshatra is Punarvasu and the 12th is Uttara Phalguni. If Mars moves into Punarvasu, or the Sun into Uttara Phalguni, the good effects expected from the Moon's transit of Ashwini are nullified.</p>
+    <p>Note that the Vedha-causing planet is specified. Any planet will not do.</p>
   </div>
 </section>
 
-<!-- ============ MOORTHI ============ -->
+<!-- ===== MOORTHY ===== -->
 <section>
-  <h2 class="sec">Moorthi Nirnaya — the metal a graha wears</h2>
-  <p class="sublede">Every graha enters a rashi in one of four forms, and the murti sets the quality of everything it gives for the whole of that transit.</p>
+  <h2 class="sec">Moorthy Nirnaya System</h2>
+  <p class="sublede">Based on Janma Rashi, with reference to the transiting Moon at the time of ingress of a planet (Graha Sankramana) into a new Rashi. The Moon's position on that day, counted from the Natal Moon, sets the nature of that planet's transit results.</p>
   <div class="four">
-    <div class="metal"><div class="sw" style="background:#b87a22;color:#fbf6ec">Gold</div>
-      <div class="bd"><h5>Swarna Murti</h5><p>Full auspicious result. What the house promises arrives with strength and ease.</p></div></div>
-    <div class="metal"><div class="sw" style="background:#9aa3ac;color:#1e2a33">Silver</div>
-      <div class="bd"><h5>Rajata Murti</h5><p>Good, but reduced. The result comes — after effort, or later than expected.</p></div></div>
-    <div class="metal"><div class="sw" style="background:#b0703a;color:#fbf6ec">Copper</div>
-      <div class="bd"><h5>Tamra Murti</h5><p>Mixed and ordinary. Gain mingled with strain; the result is partial at best.</p></div></div>
-    <div class="metal"><div class="sw" style="background:#5f6b75;color:#fbf6ec">Iron</div>
-      <div class="bd"><h5>Loha Murti</h5><p>Adverse. The graha gives difficulty even from an otherwise favourable house.</p></div></div>
+    <div class="metal"><div class="sw" style="background:#b87a22">Swarna</div>
+      <div class="bd"><h5>1, 6, 11 — Gold</h5><p>Very good.</p></div></div>
+    <div class="metal"><div class="sw" style="background:#9aa3ac;color:#1e2a33">Rajatha</div>
+      <div class="bd"><h5>2, 5, 9 — Silver</h5><p>Good.</p></div></div>
+    <div class="metal"><div class="sw" style="background:#b0703a">Tambra</div>
+      <div class="bd"><h5>3, 7, 10 — Copper</h5><p>Average / mixed.</p></div></div>
+    <div class="metal"><div class="sw" style="background:#5f6b75">Loha</div>
+      <div class="bd"><h5>4, 8, 12 — Iron</h5><p>In-auspicious.</p></div></div>
   </div>
 
   <div class="stage" style="margin-top:20px">
-    <div class="stage-hd"><h2>Moorthi calculator</h2>
-      <div class="hint">Count from Janma Nakshatra to the ingress nakshatra, divide by four</div></div>
+    <div class="stage-hd"><h3>Moorthy calculator</h3>
+      <div class="hint">Transit Moon reckoned from Natal Moon at ingress</div></div>
     <div class="calc">
       <div>
-        <div class="ctrl"><span class="lbl">Janma Nakshatra</span><select id="jn"></select></div>
-        <div class="ctrl"><span class="lbl">Rashi the graha is entering</span><select id="ri"></select></div>
-        <div class="work" id="work"></div>
+        <div class="ctrl"><span class="lbl">Janma Rashi — Natal Moon</span><select id="mNatal"></select></div>
+        <div class="ctrl"><span class="lbl">Transit Moon on the day of ingress</span><select id="mTransit"></select></div>
+        <div class="work" id="mWork"></div>
       </div>
-      <div><div class="result" id="res"></div></div>
+      <div>
+        <svg viewBox="0 0 600 600" id="cM" role="img" aria-label="Chart showing the Moorthy zones"></svg>
+        <div class="cap" id="capM"></div>
+        <div class="result" id="mRes" style="margin-top:12px"></div>
+      </div>
     </div>
   </div>
 
-  <div class="callout" style="margin-top:18px">
-    <h4>Why the ingress nakshatra never changes</h4>
-    <p>Zero degrees of every rashi falls inside a fixed nakshatra, so the ingress star is always the same — only the Janma Nakshatra you count from differs.</p>
-    <p class="mini" style="font-size:.95rem;color:var(--indigo);letter-spacing:.1em">1 · 3 · 5 · 7 · 10 · 11 · 14 · 16 · 19 · 20 · 23 · 25</p>
-  </div>
   <div class="callout v" style="margin-top:16px">
-    <h4>Verify this section against your syllabus</h4>
-    <p>Moorthi Nirnaya was not in the source material supplied, so this reflects the commonly taught method rather than your chapter's text. Some teachers count instead to the nakshatra ruling the <em>day</em> of ingress. Confirm before teaching it.</p>
+    <h4>Worked example</h4>
+    <p>The Sun is lord of the 5th and posited in the 3rd natally. In transit it is in the 10th from Janma Rashi — Shubha Gochara. But when the Sun ingressed, the Moon stood in the 4th from Janma Rashi: <strong>Loha Moorthy</strong>. The auspicious transit is modified, and because the Sun rules the 5th, the in-auspicious turn is read with respect to progeny.</p>
+    <p>A Shubha Gochara can still disappoint. Always check the Moorthy in force at the moment of ingress.</p>
   </div>
 </section>
 
-<!-- ============ CAUTIONS ============ -->
 <section>
-  <h2 class="sec">These are filters, not forecasts</h2>
+  <h2 class="sec">Before you use any of this on a chart</h2>
   <ul class="check">
     <li>The Dasha–Bhukti decides whether an event is on the table at all. A transit cannot deliver what the dasha has not promised.</li>
-    <li>Check natal strength first. A debilitated graha keeps a weak promise even from an auspicious house wearing gold.</li>
-    <li>Cross-check Ashtakavarga. A transit through a rashi with high bindus behaves very differently from one with two or three.</li>
-    <li><strong>Mind the reference point.</strong> Vedha counts from the Moon. Vipareetha Vedha counts from the transiting graha. Nakshatra Vedha counts from its nakshatra.</li>
-    <li>Where sources differ — say so. Venus's Vedha pairs are not perfectly reciprocal, and Moorthi counting has a rival method.</li>
+    <li>Check natal strength first, and cross-check the Sarvashtakavarga bindus of the Rashi being transited.</li>
+    <li>Vedha is occupancy — a planet physically standing in that house. Not aspect, not lordship.</li>
+    <li><strong>Name the reference point out loud, every time.</strong> That single habit prevents almost every error in this topic.</li>
   </ul>
 </section>
 
 <footer>
-  <span>ICAS Bangalore-2 · Classroom Material</span>
-  <span>Sources: Phaladeepika · Laws of Nature</span>
+  <span>ICAS Bangalore-2 · Classroom companion</span>
+  <span>Sources : Phaladeepika · Laws of Nature</span>
 </footer>
 </div>
 
 <script>
 const RASHI=["Mesha","Vrishabha","Mithuna","Karka","Simha","Kanya","Tula","Vrischika","Dhanus","Makara","Kumbha","Meena"];
 const CELL={1:[1,0],2:[2,0],3:[3,0],4:[3,1],5:[3,2],6:[3,3],7:[2,3],8:[1,3],9:[0,3],10:[0,2],11:[0,1],12:[0,0]};
-const NAK=["Ashwini","Bharani","Krittika","Rohini","Mrigashira","Ardra","Punarvasu","Pushya","Ashlesha","Magha",
- "P.Phalguni","U.Phalguni","Hasta","Chitra","Swati","Vishakha","Anuradha","Jyeshtha","Mula","P.Ashadha",
- "U.Ashadha","Shravana","Dhanishta","Shatabhisha","P.Bhadrapada","U.Bhadrapada","Revati"];
-const THRESH={1:1,2:3,3:5,4:7,5:10,6:11,7:14,8:16,9:19,10:20,11:23,12:25};
 
-/* Vedha — Phaladeepika */
+/* verified from Timing of Events by Transit V1.0 */
 const VEDHA={
- Sun:{good:[3,6,10,11],v:{3:9,6:12,10:4,11:5},exempt:"Saturn"},
- Moon:{good:[1,3,6,7,10,11],v:{1:5,3:9,6:12,7:2,10:4,11:8},exempt:"Mercury"},
- Mars:{good:[3,6,11],v:{3:12,6:9,11:5}},
- Mercury:{good:[2,4,6,8,10,11],v:{2:5,4:3,6:9,8:1,10:8,11:12},exempt:"the Moon"},
- Jupiter:{good:[2,5,7,9,11],v:{2:12,5:4,7:3,9:10,11:8}},
- Venus:{good:[1,2,3,4,5,8,9,11,12],v:{1:8,2:7,3:1,4:10,5:9,8:5,9:11,11:3,12:6}},
- Saturn:{good:[3,6,11],v:{3:12,6:9,11:5},exempt:"the Sun"},
- "Rahu / Ketu":{good:[3,6,10,11],v:{3:9,6:12,10:4,11:5}}
+ Sun:[[3,6,10,11],[9,12,4,5]],
+ Moon:[[1,3,6,7,10,11],[5,9,12,2,4,8]],
+ Mars:[[3,6,11],[12,9,5]],
+ Mercury:[[2,4,6,8,10,11],[5,3,9,1,8,12]],
+ Jupiter:[[2,5,7,9,11],[12,4,3,10,8]],
+ Venus:[[1,2,3,4,5,8,9,11,12],[8,7,1,10,9,5,11,3,6]],
+ Saturn:[[3,6,11],[12,9,5]],
+ "Rahu / Ketu":[[3,6,10,11],[9,12,4,5]]
 };
-const GOCHARA={
- Sun:[[3,6,10,11],[1,2,4,5,7,8,9,12]],
- Moon:[[1,3,6,7,10,11],[2,4,5,8,9,12]],
- Mars:[[3,6,11],[1,2,4,5,7,8,9,10,12]],
- Mercury:[[2,4,6,8,10,11],[1,3,5,7,9,12]],
- Jupiter:[[2,5,7,9,11],[1,3,4,6,8,10,12]],
- Venus:[[1,2,3,4,5,8,9,11,12],[6,7,10]],
- Saturn:[[3,6,11],[1,2,4,5,7,8,9,10,12]],
- "Rahu / Ketu":[[3,6,10,11],[1,2,4,5,7,8,9,12]]
-};
-/* Vipareetha Vedha: [ashubha houses FROM MOON, relief houses FROM THE GRAHA] */
 const VIP={
  Sun:[[4,5,9,11],[3,6,10,11]],
  Moon:[[1,4,5,8,9,12],[2,3,6,7,10,11]],
@@ -314,197 +297,169 @@ const VIP={
  Saturn:[[5,9,12],[3,6,11]],
  "Rahu / Ketu":[[4,5,9,11],[3,6,10,11]]
 };
-const NVEDHA=[["Sun","9th, 15th nakshatra","Rahu / Ketu"],["Moon","7th, 12th nakshatra","Mars, Sun"],
- ["Mars","4th, 12th nakshatra","Mercury, Moon"],["Mercury","5th, 7th nakshatra","Jupiter, Saturn"],
- ["Jupiter","6th, 12th nakshatra","Venus, Rahu"],["Venus","8th, 18th nakshatra","Saturn, Mercury"]];
-const PHALA={
- Sun:{3:"Success in undertakings, gains, enemies fall away.",6:"Victory over opponents, freedom from illness.",10:"Recognition at work, duty accomplished.",11:"Gains, honour, desires fulfilled."},
- Moon:{1:"Comfort, good food, ease of mind.",3:"Gain, success, cheerfulness.",6:"Freedom from disease and debt.",7:"Pleasure, harmony with partner.",10:"Work accomplished.",11:"Gain of wealth and friends."},
- Mars:{3:"Courage rewarded, initiative gains.",6:"Rivals defeated, obstacles cleared.",11:"Wealth, property, decisive gain."},
- Mercury:{2:"Gain of money, pleasant speech.",4:"Domestic comfort.",6:"Rivals and litigation subdued.",8:"Unexpected favour.",10:"Professional gain.",11:"All-round gains, good news."},
- Jupiter:{2:"Wealth, family happiness.",5:"Children, learning, merit.",7:"Marriage, partnership, comfort.",9:"Fortune, dharma, profitable travel.",11:"Gains, honour, elevation."},
- Venus:{1:"Pleasure, ornaments, ease.",2:"Wealth and family comfort.",3:"Fortune, new comforts.",4:"Domestic happiness, vehicle, home.",5:"Children, romance, delight.",8:"Gain of wealth, favour.",9:"Fortune, auspicious events.",11:"Gains, desires fulfilled.",12:"Luxury, comfort in rest."},
- Saturn:{3:"Relief, gain, burdens lifted.",6:"Victory over enemies, health restored.",11:"Steady gain, the long-awaited result."},
- "Rahu / Ketu":{3:"Boldness rewarded.",6:"Enemies subdued.",10:"Position advanced.",11:"Unexpected gain."}
-};
+const NV=[["Sun","9th, 15th Nakshatra","Rahu / Ketu"],["Moon","7th, 12th Nakshatra","Mars, Sun"],
+ ["Mars","4th, 12th Nakshatra","Mercury, Moon"],["Mercury","5th, 7th Nakshatra","Jupiter, Saturn"],
+ ["Jupiter","6th, 12th Nakshatra","Venus, Rahu"],["Venus","8th, 18th Nakshatra","Saturn, Mercury"],
+ ["Saturn","9th, 12th Nakshatra","Sun, Jupiter"],["Rahu / Ketu","9th, 13th Nakshatra","Moon, Mars"]];
+const MOORTHY=[["Swarna","Gold",[1,6,11],"Very Good","#b87a22","#fbf6ec"],
+ ["Rajatha","Silver",[2,5,9],"Good","#9aa3ac","#1e2a33"],
+ ["Tambra","Copper",[3,7,10],"Average / mixed","#b0703a","#fbf6ec"],
+ ["Loha","Iron",[4,8,12],"In-auspicious","#5f6b75","#fbf6ec"]];
+const PHALA={Sun:{3:"Success in undertakings, gains.",6:"Victory over opponents, freedom from illness.",10:"Recognition at work.",11:"Gains, honour, desires fulfilled."},
+ Moon:{1:"Comfort, ease of mind.",3:"Gain, cheerfulness.",6:"Freedom from disease and debt.",7:"Harmony with partner.",10:"Work accomplished.",11:"Gain of wealth and friends."},
+ Mars:{3:"Courage rewarded.",6:"Rivals defeated.",11:"Wealth, property, decisive gain."},
+ Mercury:{2:"Gain of money, pleasant speech.",4:"Domestic comfort.",6:"Litigation subdued.",8:"Unexpected favour.",10:"Professional gain.",11:"All-round gains."},
+ Jupiter:{2:"Wealth, family happiness.",5:"Children, learning, merit.",7:"Marriage, partnership.",9:"Fortune, dharma.",11:"Gains, honour, elevation."},
+ Venus:{1:"Pleasure, ease.",2:"Wealth and family comfort.",3:"Fortune, new comforts.",4:"Domestic happiness, vehicle.",5:"Children, delight.",8:"Gain of wealth.",9:"Auspicious events.",11:"Desires fulfilled.",12:"Luxury, comfort."},
+ Saturn:{3:"Relief, burdens lifted.",6:"Enemies subdued, health restored.",11:"Steady gain, long-awaited result."},
+ "Rahu / Ketu":{3:"Boldness rewarded.",6:"Enemies subdued.",10:"Position advanced.",11:"Unexpected gain."}};
 
-const S=150,NS="http://www.w3.org/2000/svg";
-let planet="Saturn",janma=1,mode="vedha",sel=null;
+const NS="http://www.w3.org/2000/svg",S=150;
+let planet="Saturn",janma=1,mode="vedha";
 const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 const ord=n=>n+(["th","st","nd","rd"][n%10>3||(n>10&&n<14)?0:n%10]||"th");
 const rashiFrom=(ref,h)=>((ref-1+h-1)%12)+1;
 const houseFrom=(ref,r)=>((r-ref+12)%12)+1;
 
-function build(id){
-  const svg=document.getElementById(id);
-  svg.innerHTML="";
+function build(id,clickable){
+  const svg=document.getElementById(id);svg.innerHTML="";
   svg.appendChild(el("rect",{x:S,y:S,width:S*2,height:S*2,fill:"#f5eddd",stroke:"#d5c3a4"}));
   for(let r=1;r<=12;r++){
     const[c,ro]=CELL[r],x=c*S,y=ro*S;
-    const g=el("g",{class:"cell",id:id+"c"+r,tabindex:"0",role:"button"});
+    const g=el("g",{class:"cell",id:id+"_"+r,tabindex:clickable?"0":"-1",role:clickable?"button":"img"});
     g.appendChild(el("rect",{x,y,width:S,height:S,fill:"#fbf6ec",stroke:"#d5c3a4","stroke-width":1.6}));
     const rn=el("text",{x:x+10,y:y+22,fill:"#6e5f4a","font-family":"IBM Plex Mono,monospace","font-size":"12"});
     rn.textContent=RASHI[r-1];rn.setAttribute("class","rn");g.appendChild(rn);
-    const hn=el("text",{x:x+S/2,y:y+S/2+16,"text-anchor":"middle",fill:"#2a1e14","font-family":"Gentium Book Plus,serif","font-size":"40"});
+    const hn=el("text",{x:x+S/2,y:y+S/2+15,"text-anchor":"middle",fill:"#2a1e14","font-family":"Gentium Book Plus,serif","font-size":"38"});
     hn.setAttribute("class","hn");g.appendChild(hn);
-    const hl=el("text",{x:x+S/2,y:y+S-16,"text-anchor":"middle",fill:"#a83228","font-family":"IBM Plex Mono,monospace","font-size":"9","letter-spacing":"1.4"});
-    hl.setAttribute("class","hl");g.appendChild(hl);
-    if(id==="chartA"){g.addEventListener("click",()=>pick(r));
+    const lb=el("text",{x:x+S/2,y:y+S-16,"text-anchor":"middle",fill:"#a83228","font-family":"IBM Plex Mono,monospace","font-size":"9","letter-spacing":"1.3"});
+    lb.setAttribute("class","lb");g.appendChild(lb);
+    if(clickable){g.addEventListener("click",()=>pick(r));
       g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(r)}});}
-    else{g.style.cursor="default"}
+    else g.style.cursor="default";
     svg.appendChild(g);
   }
 }
-function paintChart(id,ref,hl,refLabel){
+function paint(id,ref,hl,label){
   hl=hl||{};
   for(let r=1;r<=12;r++){
-    const g=document.getElementById(id+"c"+r);if(!g)continue;
+    const g=document.getElementById(id+"_"+r);if(!g)continue;
     const rect=g.querySelector("rect"),h=houseFrom(ref,r),k=hl[r];
-    const fill = k==="good"?"#b87a22" : k==="relief"?"#4a7350" : k==="bad"?"#f3ded9" : "#fbf6ec";
-    const brd  = k==="good"?"#8f5d14" : k==="relief"?"#3a5c3f" : (k==="bad"||k==="block")?"#a83228" : "#d5c3a4";
-    rect.setAttribute("fill",fill);
-    rect.setAttribute("stroke",brd);
+    const sp=(k&&typeof k==="object")?k:null;
+    const fill=sp?sp.fill:k==="good"?"#b87a22":k==="relief"?"#4a7350":k==="bad"?"#f3ded9":"#fbf6ec";
+    const brd=sp?sp.fill:k==="good"?"#8f5d14":k==="relief"?"#3a5c3f":(k==="bad"||k==="block")?"#a83228":"#d5c3a4";
+    rect.setAttribute("fill",fill);rect.setAttribute("stroke",brd);
     rect.setAttribute("stroke-width",k?3:1.6);
     rect.setAttribute("stroke-dasharray",k==="block"?"7 5":"none");
-    const light=(k==="good"||k==="relief");
-    g.querySelector(".rn").setAttribute("fill",light?"#fbf6ec":"#6e5f4a");
-    const hn=g.querySelector(".hn");
-    hn.textContent=h;
-    hn.setAttribute("fill",light?"#fbf6ec":(k==="bad"||k==="block")?"#a83228":"#2a1e14");
-    const hl2=g.querySelector(".hl");
-    hl2.textContent = r===ref ? refLabel : "";
-    hl2.setAttribute("fill",light?"#fbf6ec":"#a83228");
+    const lite=sp?true:(k==="good"||k==="relief");
+    g.querySelector(".rn").setAttribute("fill",lite?"#fbf6ec":"#6e5f4a");
+    const hn=g.querySelector(".hn");hn.textContent=h;
+    hn.setAttribute("fill",lite?"#fbf6ec":(k==="bad"||k==="block")?"#a83228":"#2a1e14");
+    const lb=g.querySelector(".lb");
+    lb.textContent=(r===ref)?label:"";lb.setAttribute("fill",lite?"#fbf6ec":"#a83228");
   }
 }
-
 function refresh(){
-  const isVip = mode==="vip";
-  document.getElementById("wrapB").style.display = isVip ? "" : "none";
-  document.getElementById("charts").className = isVip ? "charts" : "charts single";
-  const d=VEDHA[planet], vp=VIP[planet];
-  if(!isVip){
+  const vip=mode==="vip";
+  document.getElementById("wrapB").style.display=vip?"":"none";
+  document.getElementById("charts").className=vip?"charts two":"charts";
+  const V=VEDHA[planet],P=VIP[planet];
+  if(!vip){
     const hl={};
-    d.good.forEach(h=>hl[rashiFrom(janma,h)]="good");
-    d.good.forEach(h=>{const b=rashiFrom(janma,d.v[h]); if(!hl[b])hl[b]="block";});
-    paintChart("chartA",janma,hl,"JANMA");
+    V[0].forEach(h=>hl[rashiFrom(janma,h)]="good");
+    V[0].forEach((h,i)=>{const b=rashiFrom(janma,V[1][i]);if(!hl[b])hl[b]="block";});
+    paint("cA",janma,hl,"JANMA");
     document.getElementById("capA").textContent="From the Moon — "+RASHI[janma-1];
-    document.getElementById("capA").className="cap";
-    document.getElementById("ro-title").textContent=planet;
-    document.getElementById("ro-body").innerHTML="Auspicious from houses <strong class='good'>"+d.good.join(", ")+
-      "</strong> counted from the Moon. Dashed squares are the vedha houses. <span class='mini'>Tap a gold square.</span>";
+    document.getElementById("roT").textContent=planet;
+    document.getElementById("roB").innerHTML="Auspicious from houses <strong class='good'>"+V[0].join(", ")+
+      "</strong> counted from the Moon. Dashed squares are the Vedha positions. <span class='mini'>Tap a gold square.</span>";
   }else{
-    const hl={};
-    vp[0].forEach(h=>hl[rashiFrom(janma,h)]="bad");
-    paintChart("chartA",janma,hl,"JANMA");
+    const hl={};P[0].forEach(h=>hl[rashiFrom(janma,h)]="bad");
+    paint("cA",janma,hl,"JANMA");
+    paint("cB",janma,{},"");
     document.getElementById("capA").textContent="Step 1 — from the Moon ("+RASHI[janma-1]+")";
-    document.getElementById("capA").className="cap";
-    paintChart("chartB",janma,{},"");
-    document.getElementById("capB").textContent="Step 2 — tap a red square first";
-    document.getElementById("ro-title").textContent=planet;
-    document.getElementById("ro-body").innerHTML="In-auspicious from houses <strong class='bad'>"+vp[0].join(", ")+
-      "</strong> counted from the Moon. <span class='mini'>Tap a red square to see where relief is counted from.</span>";
+    document.getElementById("capB").textContent="Step 2 — tap a red square";
+    document.getElementById("roT").textContent=planet;
+    document.getElementById("roB").innerHTML="In-auspicious from houses <strong class='bad'>"+P[0].join(", ")+
+      "</strong> counted from the Moon. <span class='mini'>Tap a red square to renumber from the planet.</span>";
   }
-  document.getElementById("ro-verdict").innerHTML="";
-  sel=null;
+  document.getElementById("roV").innerHTML="";
 }
-
 function pick(r){
-  const d=VEDHA[planet], vp=VIP[planet];
-  const V=document.getElementById("ro-verdict");
+  const V=VEDHA[planet],P=VIP[planet],h=houseFrom(janma,r),out=document.getElementById("roV");
   if(mode==="vedha"){
-    const h=houseFrom(janma,r);
-    if(!d.good.includes(h)){refresh();
-      document.getElementById("ro-title").textContent=RASHI[r-1]+" — the "+ord(h)+" from the Moon";
-      document.getElementById("ro-body").innerHTML="Not a shubha gochara house for "+planet+
-        ". Vedha applies only where the graha can give an auspicious result. <span class='mini'>Tap a gold square.</span>";
+    const i=V[0].indexOf(h);
+    if(i<0){refresh();
+      document.getElementById("roT").textContent=RASHI[r-1]+" — the "+ord(h)+" from the Moon";
+      document.getElementById("roB").innerHTML="Not a Shubha Gochara house for "+planet+". <span class='mini'>Tap a gold square.</span>";
       return;}
-    const vh=d.v[h], vr=rashiFrom(janma,vh);
-    const hl={};hl[r]="good";hl[vr]="block";
-    paintChart("chartA",janma,hl,"JANMA");
-    document.getElementById("ro-title").textContent=planet+" in "+RASHI[r-1]+" — the "+ord(h)+" from the Moon";
-    document.getElementById("ro-body").innerHTML="<span class='mini'>PROMISES</span><br>"+((PHALA[planet]||{})[h]||"An auspicious transit result.");
-    const ex=d.exempt?"<br><br><em>Exception: "+d.exempt+" standing there causes no vedha to "+planet+".</em>":"";
-    V.innerHTML="<div class='verdict'><strong>Vedha from "+RASHI[vr-1]+" — the "+ord(vh)+
-      " from the Moon.</strong> If any graha occupies that rashi at the same time, this result does not arrive."+ex+"</div>";
+    const vh=V[1][i],vr=rashiFrom(janma,vh),hl={};hl[r]="good";hl[vr]="block";
+    paint("cA",janma,hl,"JANMA");
+    document.getElementById("roT").textContent=planet+" in "+RASHI[r-1]+" — the "+ord(h)+" from the Moon";
+    document.getElementById("roB").innerHTML="<span class='mini'>PROMISES</span><br>"+((PHALA[planet]||{})[h]||"An auspicious transit result.");
+    out.innerHTML="<div class='verdict'><strong>Vedha from "+RASHI[vr-1]+" — the "+ord(vh)+" from the Moon.</strong> If any planet occupies that Rashi at the same time, this result is obstructed and does not arrive.</div>";
   }else{
-    const h=houseFrom(janma,r);
-    if(!vp[0].includes(h)){refresh();
-      document.getElementById("ro-title").textContent=RASHI[r-1]+" — the "+ord(h)+" from the Moon";
-      document.getElementById("ro-body").innerHTML="Not one of "+planet+
-        "'s in-auspicious houses in this table, so Vipareetha Vedha is not reckoned here. <span class='mini'>Tap a red square.</span>";
+    if(P[0].indexOf(h)<0){refresh();
+      document.getElementById("roT").textContent=RASHI[r-1]+" — the "+ord(h)+" from the Moon";
+      document.getElementById("roB").innerHTML="Not an Ashubha Gochara house for "+planet+" in this table. <span class='mini'>Tap a red square.</span>";
       return;}
-    const hlA={};hlA[r]="bad";
-    paintChart("chartA",janma,hlA,"JANMA");
+    const hlA={};hlA[r]="bad";paint("cA",janma,hlA,"JANMA");
+    const hlB={};P[1].forEach(x=>hlB[rashiFrom(r,x)]="relief");
+    paint("cB",r,hlB,planet.split(" ")[0].toUpperCase());
+    const names=P[1].map(x=>RASHI[rashiFrom(r,x)-1]);
     document.getElementById("capA").textContent="Step 1 — "+planet+" in the "+ord(h)+" from the Moon";
-    /* renumber chart B from the graha's own rashi */
-    const hlB={};
-    vp[1].forEach(x=>hlB[rashiFrom(r,x)]="relief");
-    paintChart("chartB",r,hlB,planet.toUpperCase().slice(0,6));
-    const names=vp[1].map(x=>RASHI[rashiFrom(r,x)-1]);
-    document.getElementById("capB").textContent="Step 2 — from "+planet+" in "+RASHI[r-1];
-    document.getElementById("ro-title").textContent=planet+" in "+RASHI[r-1]+" — the "+ord(h)+" from the Moon";
-    document.getElementById("ro-body").innerHTML="<span class='mini'>THREATENS</span><br>An in-auspicious transit result. Now renumber from "+
-      RASHI[r-1]+" as house 1.";
-    V.innerHTML="<div class='verdict relief'><strong>Relief from the "+vp[1].map(ord).join(", ")+" counted from "+planet+
-      "</strong> — that is "+names.join(", ")+". If any other transiting graha occupies one of those rashis, the in-auspicious result is nullified.</div>";
+    document.getElementById("capB").textContent="Step 2 — renumbered from "+planet;
+    document.getElementById("roT").textContent=planet+" in "+RASHI[r-1]+" — the "+ord(h)+" from the Moon";
+    document.getElementById("roB").innerHTML="<span class='mini'>THREATENS</span><br>An in-auspicious transit result. Now take "+RASHI[r-1]+" as house 1.";
+    out.innerHTML="<div class='verdict relief'><strong>Relief from the "+P[1].map(ord).join(", ")+" counted from "+planet+
+      "</strong> — that is "+names.join(", ")+". If any other transiting planet occupies one of those Rashis, the in-auspicious result is nullified.</div>";
   }
 }
-
 /* controls */
 const rw=document.getElementById("rashis");
 RASHI.forEach((n,i)=>{const b=document.createElement("button");
- b.className="pbtn sbtn";b.dataset.r=i+1;b.setAttribute("aria-pressed",i===0);b.textContent=n;
- b.onclick=()=>{janma=i+1;document.querySelectorAll("#rashis .pbtn").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.r===janma));refresh();};
+ b.className="btn sm";b.dataset.r=i+1;b.setAttribute("aria-pressed",i===0);b.textContent=n;
+ b.onclick=()=>{janma=i+1;document.querySelectorAll("#rashis .btn").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.r===janma));refresh();};
  rw.appendChild(b);});
 const pw=document.getElementById("planets");
 Object.keys(VEDHA).forEach(k=>{const b=document.createElement("button");
- b.className="pbtn";b.dataset.p=k;b.setAttribute("aria-pressed",k==="Saturn");b.textContent=k;
- b.onclick=()=>{planet=k;document.querySelectorAll("#planets .pbtn").forEach(x=>x.setAttribute("aria-pressed",x.dataset.p===k));refresh();};
+ b.className="btn";b.dataset.p=k;b.setAttribute("aria-pressed",k==="Saturn");b.textContent=k;
+ b.onclick=()=>{planet=k;document.querySelectorAll("#planets .btn").forEach(x=>x.setAttribute("aria-pressed",x.dataset.p===k));refresh();};
  pw.appendChild(b);});
-document.querySelectorAll("#modes .pbtn").forEach(b=>b.onclick=()=>{
- mode=b.dataset.m;document.querySelectorAll("#modes .pbtn").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===mode));refresh();});
-
+document.querySelectorAll("#modes .btn").forEach(b=>b.onclick=()=>{
+ mode=b.dataset.m;document.querySelectorAll("#modes .btn").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===mode));refresh();});
 /* tables */
-const tg=document.getElementById("tgochara");
-Object.keys(GOCHARA).forEach(k=>{const tr=document.createElement("tr");
- tr.innerHTML="<th scope='row'>"+k+"</th><td class='num good'>"+GOCHARA[k][0].join(", ")+
-   "</td><td class='num bad'>"+GOCHARA[k][1].join(", ")+"</td>";tg.appendChild(tr);});
-const tv=document.getElementById("tvedha");
-Object.keys(VEDHA).forEach(k=>{const d=VEDHA[k];const tr=document.createElement("tr");
- tr.innerHTML="<th scope='row'>"+k+"</th><td class='num good'>"+d.good.join(",  ")+
-   "</td><td class='num bad'>"+d.good.map(g=>d.v[g]).join(",  ")+"</td>";tv.appendChild(tr);});
-const tp=document.getElementById("tvip");
+const tV=document.getElementById("tV");
+Object.keys(VEDHA).forEach(k=>{const tr=document.createElement("tr");
+ tr.innerHTML="<th scope='row'>"+k+"</th><td class='num good'>"+VEDHA[k][0].join(",  ")+
+ "</td><td class='num bad'>"+VEDHA[k][1].join(",  ")+"</td>";tV.appendChild(tr);});
+const tP=document.getElementById("tP");
 Object.keys(VIP).forEach(k=>{const tr=document.createElement("tr");
  tr.innerHTML="<th scope='row'>"+k+"</th><td class='num bad'>"+VIP[k][0].join(",  ")+
-   "</td><td class='num rel'>"+VIP[k][1].join(",  ")+"</td>";tp.appendChild(tr);});
-const tn=document.getElementById("tnak");
-NVEDHA.forEach(r=>{const tr=document.createElement("tr");
- tr.innerHTML="<th scope='row'>"+r[0]+"</th><td class='bad'>"+r[1]+"</td><td>"+r[2]+"</td>";tn.appendChild(tr);});
-
-/* moorthi calculator */
-const MURTI={1:["Swarna Murti","Gold","#b87a22","#fbf6ec","Full auspicious result. What the house promises arrives with strength and ease."],
- 2:["Rajata Murti","Silver","#9aa3ac","#1e2a33","Good, but reduced. The result comes — after effort, or later than expected."],
- 3:["Tamra Murti","Copper","#b0703a","#fbf6ec","Mixed and ordinary. Gain mingled with strain; the result is partial at best."],
- 0:["Loha Murti","Iron","#5f6b75","#fbf6ec","Adverse. The graha gives difficulty even from an otherwise favourable house."]};
-const jn=document.getElementById("jn"),ri=document.getElementById("ri");
-NAK.forEach((n,i)=>{const o=document.createElement("option");o.value=i+1;o.textContent=(i+1)+".  "+n;jn.appendChild(o)});
-RASHI.forEach((n,i)=>{const o=document.createElement("option");o.value=i+1;o.textContent=n;ri.appendChild(o)});
-jn.value=4;ri.value=11;
-function calcMurti(){
-  const j=+jn.value,r=+ri.value,t=THRESH[r];
-  const count=((t-j+27)%27)+1, rem=count%4, m=MURTI[rem];
-  document.getElementById("work").innerHTML=
-    "Janma Nakshatra &nbsp; <b>"+NAK[j-1]+" ("+j+")</b><br>"+
-    "Ingress nakshatra &nbsp; <b>"+NAK[t-1]+" ("+t+")</b><br>"+
-    "Count "+j+" → "+t+" inclusive &nbsp;=&nbsp; <b>"+count+"</b><br>"+
-    count+" ÷ 4 &nbsp;=&nbsp; "+Math.floor(count/4)+" remainder <b>"+rem+"</b>";
-  const res=document.getElementById("res");
-  res.style.background=m[2];res.style.color=m[3];
-  res.innerHTML="<div class='m'>"+m[0]+"</div><div class='s'>"+m[1]+"</div><div class='d'>"+m[4]+"</div>";
+ "</td><td class='num rel'>"+VIP[k][1].join(",  ")+"</td>";tP.appendChild(tr);});
+const tN=document.getElementById("tN");
+NV.forEach(r=>{const tr=document.createElement("tr");
+ tr.innerHTML="<th scope='row'>"+r[0]+"</th><td class='bad'>"+r[1]+"</td><td>"+r[2]+"</td>";tN.appendChild(tr);});
+/* moorthy calculator */
+const mN=document.getElementById("mNatal"),mT=document.getElementById("mTransit");
+RASHI.forEach((n,i)=>{[mN,mT].forEach(sel=>{const o=document.createElement("option");o.value=i+1;o.textContent=n;sel.appendChild(o)})});
+mN.value=1;mT.value=4;
+function calcM(){
+  const n=+mN.value,t=+mT.value,h=houseFrom(n,t);
+  const m=MOORTHY.find(x=>x[2].includes(h));
+  const hl={};MOORTHY.forEach(x=>x[2].forEach(hh=>{hl[rashiFrom(n,hh)]={fill:x[4]};}));
+  paint("cM",n,hl,"JANMA");
+  document.getElementById("capM").textContent="Transit Moon reckoned from Natal Moon";
+  document.getElementById("mWork").innerHTML=
+    "Natal Moon &nbsp; <b>"+RASHI[n-1]+"</b><br>Transit Moon at ingress &nbsp; <b>"+RASHI[t-1]+"</b><br>"+
+    "That is the &nbsp; <b>"+ord(h)+"</b> &nbsp; from the Natal Moon";
+  const res=document.getElementById("mRes");
+  res.style.background=m[4];res.style.color=m[5];
+  res.innerHTML="<div class='m'>"+m[0]+" Moorthy</div><div class='s'>"+m[1]+" — "+ord(h)+"</div><div class='d'>"+m[3]+"</div>";
 }
-jn.onchange=calcMurti;ri.onchange=calcMurti;
+mN.onchange=calcM;mT.onchange=calcM;
 
-build("chartA");build("chartB");refresh();calcMurti();
+build("cA",true);build("cB",false);build("cM",false);refresh();calcM();
 </script>
 </body>
 </html>
