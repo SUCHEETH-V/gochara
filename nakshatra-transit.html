@@ -1,1 +1,672 @@
-#Example
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nakshatra Transit — ICAS Bengaluru-2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Spectral:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1f3f;
+    --navy-dark:#071630;
+    --gold:#b8892b;
+    --gold-light:#e8d9b5;
+    --cream:#f7f3e9;
+    --cream-line:#e4d9bc;
+    --ink:#1c1c1c;
+    --muted:#5a5a5a;
+    --good:#2e6b3e;
+    --bad:#9b2226;
+    --mixed:#a6702b;
+    --paper:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--navy);
+    font-family:'Spectral',serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:1180px;
+    margin:0 auto;
+    background:var(--paper);
+    min-height:100vh;
+    box-shadow:0 0 60px rgba(0,0,0,0.35);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 20%, rgba(184,137,43,0.18), transparent 45%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color:#fff;
+    padding:64px 48px 52px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-family:'Jost',sans-serif;
+    letter-spacing:.22em;
+    font-size:12.5px;
+    color:var(--gold);
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:clamp(42px,6vw,68px);
+    margin:10px 0 6px;
+    line-height:1.02;
+  }
+  .hero p.sub{
+    font-family:'Jost',sans-serif;
+    font-size:15px;
+    color:#c9c9d6;
+    max-width:640px;
+    margin:0;
+    letter-spacing:.01em;
+  }
+  .hero .chakra{
+    position:absolute;
+    right:-40px; top:50%;
+    transform:translateY(-50%);
+    width:280px; height:280px;
+    opacity:0.9;
+  }
+
+  /* ---------- NAV ---------- */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:2px;
+    background:var(--navy-dark);
+    padding:0 40px;
+  }
+  .tab-btn{
+    font-family:'Jost',sans-serif;
+    font-size:13.5px;
+    letter-spacing:.03em;
+    font-weight:500;
+    color:#9fa8c2;
+    background:transparent;
+    border:none;
+    padding:16px 18px;
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+    transition:.18s ease;
+    white-space:nowrap;
+  }
+  .tab-btn .n{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    color:var(--gold);
+    margin-right:7px;
+  }
+  .tab-btn:hover{ color:#fff; }
+  .tab-btn.active{
+    color:#fff;
+    border-bottom:3px solid var(--gold);
+    background:rgba(184,137,43,0.08);
+  }
+
+  /* ---------- PANELS ---------- */
+  .panel{ display:none; padding:44px 48px 70px; animation:fade .35s ease; }
+  .panel.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+  .kicker{
+    font-family:'Jost',sans-serif;
+    font-size:12px;
+    letter-spacing:.2em;
+    font-weight:600;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 6px;
+  }
+  h2.title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:38px;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  p.lede{
+    font-family:'Spectral',serif;
+    font-style:italic;
+    font-size:16.5px;
+    color:var(--muted);
+    max-width:820px;
+    margin:0 0 30px;
+    line-height:1.5;
+  }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
+  @media (max-width:860px){ .grid2{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--cream);
+    border:1px solid var(--cream-line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+  .card.navy{ background:var(--navy); color:#fff; }
+  .card h3.label{
+    font-family:'Jost',sans-serif;
+    font-size:11.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 12px;
+    font-weight:600;
+  }
+  .card p{ line-height:1.55; font-size:15px; margin:0 0 12px; }
+  .card p:last-child{ margin-bottom:0; }
+  .card b{ color:var(--navy); }
+  .card.navy b{ color:var(--gold); }
+
+  table{ width:100%; border-collapse:collapse; font-family:'Spectral',serif; font-size:14px; }
+  thead th{
+    background:var(--navy); color:#fff;
+    font-family:'Jost',sans-serif; font-weight:600; font-size:12.5px;
+    letter-spacing:.02em;
+    text-align:left; padding:10px 12px;
+  }
+  tbody td{ padding:9px 12px; border-bottom:1px solid var(--cream-line); }
+  tbody tr:nth-child(even){ background:#fbf8f1; }
+  .tag{
+    display:inline-block; padding:3px 11px; border-radius:20px;
+    font-family:'Jost',sans-serif; font-size:11.5px; font-weight:600; color:#fff;
+  }
+  .tag.good{ background:var(--good); }
+  .tag.bad{ background:var(--bad); }
+  .tag.mixed{ background:var(--mixed); }
+
+  .bullets{ list-style:none; margin:0; padding:0; }
+  .bullets li{
+    position:relative; padding-left:20px; margin-bottom:14px;
+    line-height:1.55; font-size:15px;
+  }
+  .bullets li::before{
+    content:''; position:absolute; left:0; top:8px;
+    width:7px; height:7px; border-radius:50%; background:var(--gold);
+  }
+
+  /* ---------- interactive tool shell ---------- */
+  .tool{
+    background:var(--navy); color:#fff; border-radius:12px;
+    padding:26px 28px; margin-top:8px;
+  }
+  .tool h3.label{ color:var(--gold); }
+  .tool-row{ display:flex; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
+  .field{ display:flex; flex-direction:column; gap:6px; flex:1; min-width:160px; }
+  .field label{
+    font-family:'Jost',sans-serif; font-size:11.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:#9fa8c2;
+  }
+  select, input[type=number]{
+    font-family:'Spectral',serif; font-size:14.5px;
+    background:rgba(255,255,255,0.07); color:#fff;
+    border:1px solid rgba(255,255,255,0.2); border-radius:6px;
+    padding:9px 10px; outline:none;
+  }
+  select option{ color:#111; }
+  select:focus, input:focus{ border-color:var(--gold); }
+
+  .result{
+    background:rgba(184,137,43,0.12);
+    border:1px solid rgba(184,137,43,0.4);
+    border-radius:8px; padding:18px 20px;
+    font-family:'Spectral',serif; font-size:15.5px; line-height:1.6;
+  }
+  .result .big{
+    font-family:'Cormorant Garamond',serif; font-weight:700;
+    font-size:24px; color:var(--gold); display:block; margin-bottom:4px;
+  }
+  .result .muted{ color:#c9c9d6; font-size:13px; }
+
+  /* ---------- Saptha Shalakha grid ---------- */
+  .grid-wrap{ position:relative; }
+  #shalakha-svg{ width:100%; height:auto; display:block; }
+  .glabel{
+    font-family:'Jost',sans-serif; font-size:9.5px; fill:var(--muted);
+  }
+  .gline{ stroke:#e6dcc2; stroke-width:1; }
+  .gpoint{ cursor:pointer; transition:.15s; }
+  .gpoint:hover{ r:7; }
+  .caption{ font-family:'Jost',sans-serif; font-size:11.5px; color:#8a8a8a; font-style:italic; margin-top:10px; }
+
+  footer{
+    background:var(--navy-dark); color:#8e9bb8;
+    font-family:'Jost',sans-serif; font-size:11.5px;
+    padding:20px 48px; display:flex; justify-content:space-between;
+  }
+
+  ::selection{ background:var(--gold-light); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">ICAS · Bengaluru-2 Malleshwaram Chapter · Topic 4</div>
+    <h1>Nakshatra Transit</h1>
+    <p class="sub">An interactive classroom companion to Vedha, Saptha Shalakha, Tara Bala, Latta and Nakshatra Anga Phala — five classical methods for reading the effects of planetary transit through the 27 Nakshatras.</p>
+    <svg class="chakra" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#3a4e72" stroke-width="1"/>
+      <circle cx="100" cy="100" r="64" fill="none" stroke="#b8892b" stroke-width="1.2"/>
+      <circle cx="100" cy="100" r="38" fill="none" stroke="#3a4e72" stroke-width="1"/>
+      <line x1="10" y1="100" x2="190" y2="100" stroke="#3a4e72" stroke-width="1"/>
+      <line x1="100" y1="10" x2="100" y2="190" stroke="#3a4e72" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" id="tabs"></div>
+
+  <!-- PANELS -->
+  <div id="panels"></div>
+
+  <footer>
+    <span>ICAS Bengaluru-2 · Malleshwaram Chapter</span>
+    <span>Compiled for classroom instruction — Jyotisha Praveena course</span>
+  </footer>
+</div>
+
+<script>
+/* ================== DATA ================== */
+const NAK = ["Ashwini","Bharani","Krittika","Rohini","Mrigashira","Ardra","Punarvasu","Pushya","Ashlesha",
+  "Magha","Poorva Phalguni","Uttara Phalguni","Hasta","Chitra","Swathi","Vishaka","Anuradha","Jyeshta",
+  "Moola","Poorva Ashada","Uttara Ashada","Shravana","Dhanishta","Shatabhisha","Poorva Bhadra","Uttara Bhadra","Revathi"];
+
+function idx(name){ return NAK.indexOf(name); }
+function countFrom(birth,target){ // inclusive count, 1..27
+  return ((idx(target)-idx(birth)+27)%27)+1;
+}
+function nakAt(startName, offsetCount){ // offsetCount = 1 means the start itself
+  return NAK[(idx(startName)+offsetCount-1+2700)%27];
+}
+function nakBack(startName, offsetCount){
+  return NAK[(idx(startName)-(offsetCount-1)+2700)%27];
+}
+
+const VEDHA = {
+  "Sun":{n:[9,15], by:"Rahu / Ketu"},
+  "Moon":{n:[7,12], by:"Mars, Sun"},
+  "Mars":{n:[4,12], by:"Mercury, Moon"},
+  "Mercury":{n:[5,7], by:"Jupiter, Saturn"},
+  "Jupiter":{n:[6,12], by:"Venus, Rahu"},
+  "Venus":{n:[8,18], by:"Saturn, Mercury"},
+  "Saturn":{n:[9,12], by:"Sun, Jupiter"},
+  "Rahu / Ketu":{n:[9,13], by:"Moon, Mars"}
+};
+
+const LATTA = {
+  puro:{ "Sun":12, "Mars":3, "Jupiter":6, "Saturn":8 },
+  prushto:{ "Moon":22, "Mercury":7, "Venus":5, "Rahu / Ketu":9 }
+};
+
+const TARA_SEQ = [
+  {cat:"Janma", res:"Mixed"},
+  {cat:"Sampath", res:"Good"},
+  {cat:"Vipat", res:"Bad"},
+  {cat:"Kshema", res:"Good"},
+  {cat:"Pratyak", res:"Bad"},
+  {cat:"Sadhana", res:"Good"},
+  {cat:"Vadha / Naidhana", res:"Bad"},
+  {cat:"Mithra", res:"Good"},
+  {cat:"Parama Maithra", res:"Good"}
+];
+
+function angaRanges(spec){
+  // spec: array of [minCount,maxCount,limb,result]
+  return function(count){
+    for(const [a,b,limb,res] of spec){
+      if(count>=a && count<=b) return {limb,res};
+    }
+    return null;
+  };
+}
+const ANGA = {
+  "Sun": angaRanges([[1,1,"Face / Mouth","Damage / Loss"],[2,5,"Head","Gains of money"],[6,9,"Chest","Victories"],
+    [10,13,"Right Hand","Gains of money"],[14,19,"Two feet / Legs","Expenses"],[20,23,"Left hand","Ill-health"],
+    [24,25,"Two eyes","Gains of money"],[26,27,"Private parts","Accidents / Problems"]]),
+  "Moon": angaRanges([[1,2,"Face","Imprisonment / danger"],[3,6,"Head","Comfortable"],[7,8,"Back","Victory"],
+    [9,10,"Two Eyes","Gain of money"],[11,15,"Chest","Comfortable life"],[16,18,"Left hand","Troubles"],
+    [19,24,"Two feet","Travel"],[25,27,"Right hand","Gains of wealth"]]),
+  "Saturn, Rahu, Ketu": angaRanges([[1,1,"Face","Sorrows / Tensions"],[2,5,"Right Hand","Successful work"],
+    [6,11,"Right leg","Journeys"],[12,15,"Left hand","Accumulation of wealth"],[16,20,"Stomach","Happy married life"],
+    [21,23,"Head","Domestic bliss"],[24,25,"Two eyes","Contented"],[26,27,"Back","Damage / loss / accidents"]]),
+  "Mercury, Jupiter, Venus": angaRanges([[1,3,"Head","Tensions / inauspicious works"],[4,6,"Face","Gain of wealth"],
+    [7,12,"Two hands","Ill-health / Problems"],[13,17,"Stomach","Gain of property"],[18,19,"Privates","Expenses and losses"],
+    [20,27,"Two feet","Popularity, name and fame"]]),
+  "Saturn, Rahu, Ketu (Alternate)": angaRanges([[1,2,"Face","Accidents / Damage"],[3,8,"Two feet","Troubles / fights"],
+    [9,11,"Chest","Gains / Victory"],[12,15,"Left hand","All kinds of losses"],[16,17,"Head","Money flow"],
+    [18,21,"Face","Danger"],[22,25,"Right hand","Domestic comforts"],[26,27,"Two eyes","Travels"]])
+};
+
+/* ================== BUILD OPTIONS ================== */
+function nakOptions(selectedIdx){
+  return NAK.map((n,i)=>`<option value="${n}" ${i===selectedIdx?"selected":""}>${i+1}. ${n}</option>`).join("");
+}
+
+/* ================== TABS / PANELS DEFINITION ================== */
+const SECTIONS = [
+  {id:"vedha", num:"01", label:"Nakshatra Vedha"},
+  {id:"shalakha", num:"02", label:"Saptha Shalakha"},
+  {id:"types", num:"03", label:"Types of Vedha"},
+  {id:"tara", num:"04", label:"Tara Bala"},
+  {id:"latta", num:"05", label:"Latta"},
+  {id:"anga", num:"06", label:"Anga Phala"}
+];
+
+document.getElementById("tabs").innerHTML = SECTIONS.map((s,i)=>
+  `<button class="tab-btn ${i===0?'active':''}" data-target="${s.id}"><span class="n">${s.num}</span>${s.label}</button>`
+).join("");
+
+/* ================== PANEL: VEDHA ================== */
+const vedhaPanel = `
+<section class="panel active" id="panel-vedha">
+  <div class="kicker">Method 1</div>
+  <h2 class="title">Nakshatra Vedha</h2>
+  <p class="lede">The results of a planet's transit through the 27 Nakshatras get cancelled when another planet occupies a specified counted Nakshatra.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 class="label">Reference table</h3>
+      <table>
+        <thead><tr><th>Planet</th><th>Vedha Nakshatras</th><th>Caused by</th></tr></thead>
+        <tbody>
+          ${Object.entries(VEDHA).map(([p,v])=>`<tr><td><b>${p}</b></td><td>${v.n[0]}th, ${v.n[1]}th</td><td>${v.by}</td></tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+    <div class="tool">
+      <h3 class="label">Try it — find the Vedha Nakshatras</h3>
+      <div class="tool-row">
+        <div class="field">
+          <label>Planet</label>
+          <select id="vedha-planet"></select>
+        </div>
+        <div class="field">
+          <label>Currently transiting</label>
+          <select id="vedha-start"></select>
+        </div>
+      </div>
+      <div class="result" id="vedha-result"></div>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL: SHALAKHA ================== */
+const shalakhaPanel = `
+<section class="panel" id="panel-shalakha">
+  <div class="kicker">Method 2</div>
+  <h2 class="title">Saptha Shalakha</h2>
+  <p class="lede">A classical grid method of locating Vedha, built from seven vertical lines crossing seven horizontal lines — three lines converge at every point.</p>
+  <div class="grid2">
+    <div class="card">
+      <ul class="bullets">
+        <li>The name Saptha Shalaka derives from seven vertical lines crossing seven horizontal lines. At each intersection, three lines converge to a single point.</li>
+        <li>All 28 Nakshatras — including Abhijit — are placed on these points, starting from the North-East corner and proceeding clockwise.</li>
+        <li>A planet transiting one of these constellations interacts with the three other lines that converge at that same point.</li>
+        <li>Auspicious planets give good results and malefic planets give bad results at the point of convergence; a mix gives mixed results, depending on their relationship.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card navy" style="margin-bottom:16px;">
+        <h3 class="label">Worked example</h3>
+        <p>A planet transiting at <b>Rohini</b> converges with <b>Ashwini</b> at one point, <b>Abhijit</b> in the middle, and <b>Swathi</b> on the third line. Any planet transiting Ashwini, Abhijit or Swathi causes Vedha on the planet transiting Rohini.</p>
+      </div>
+      <div class="grid-wrap card">
+        <svg id="shalakha-svg" viewBox="0 0 500 300"></svg>
+        <div class="caption">Illustrative grid — hover a point to see how three lines converge (not to classical scale).</div>
+      </div>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL: TYPES OF VEDHA ================== */
+const typesPanel = `
+<section class="panel" id="panel-types">
+  <div class="kicker">Method 1, continued</div>
+  <h2 class="title">The Three Types of Vedha</h2>
+  <p class="lede">Planets cause Vedha in three specific directions across the board, based on their motion in the Nakshatra they currently transit.</p>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+    <div class="card">
+      <h3 class="label">01 — Sammukha Vedha</h3>
+      <p><i>Frontal / Straight aspect</i></p>
+      <p>When a planet is in direct motion at normal speed, or pauses before changing direction, its energy drills straight down — activating the Sammukha (Frontal) Vedha.</p>
+    </div>
+    <div class="card">
+      <h3 class="label">02 — Dakshina Vedha</h3>
+      <p><i>Rightward / Forward diagonal aspect</i></p>
+      <p>When a planet is retrograde — moving backward in the sky — its energetic focus shifts to the rear, activating the Dakshina (Right) Vedha.</p>
+    </div>
+    <div class="card">
+      <h3 class="label">03 — Vama Vedha</h3>
+      <p><i>Leftward / Backward diagonal aspect</i></p>
+      <p>When a planet moves forward quickly, its energy pushes ahead, predominantly activating the Left Vedha. Cast at a 45° angle, it can simultaneously strike all five core components of an individual — birth star, zodiac sign, lunar tithi, name consonant, and name vowel.</p>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL: TARA BALA ================== */
+const taraPanel = `
+<section class="panel" id="panel-tara">
+  <div class="kicker">Method 3</div>
+  <h2 class="title">Tara Bala</h2>
+  <p class="lede">The 27 Nakshatras are arranged into three groups — Janma, Anu-Janma and Tri-Janma — each carrying a Tara category and result.</p>
+  <div class="grid2">
+    <div class="tool">
+      <h3 class="label">Try it — find the Tara category</h3>
+      <div class="tool-row">
+        <div class="field">
+          <label>Janma Nakshatra (birth)</label>
+          <select id="tara-birth"></select>
+        </div>
+        <div class="field">
+          <label>Transiting Nakshatra</label>
+          <select id="tara-transit"></select>
+        </div>
+      </div>
+      <div class="result" id="tara-result"></div>
+    </div>
+    <div class="card">
+      <h3 class="label">Sequence of Tara categories (repeats 3× across 27 Nakshatras)</h3>
+      <table>
+        <thead><tr><th>Count</th><th>Category</th><th>Result</th></tr></thead>
+        <tbody>
+          ${TARA_SEQ.map((t,i)=>`<tr><td>${i+1}</td><td>${t.cat}</td><td><span class="tag ${t.res.toLowerCase()}">${t.res}</span></td></tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL: LATTA ================== */
+const lattaPanel = `
+<section class="panel" id="panel-latta">
+  <div class="kicker">Method 4</div>
+  <h2 class="title">Latta (Kick)</h2>
+  <p class="lede">Latta means "push / kick." Each transiting planet has a pre-determined Nakshatra which, when reached, creates obstruction to its auspicious results.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 class="label">Puro (Forward) Latta</h3>
+      <table>
+        <thead><tr><th>Planet</th><th>Latta On</th></tr></thead>
+        <tbody>${Object.entries(LATTA.puro).map(([p,n])=>`<tr><td>${p}</td><td>${n}th Nakshatra</td></tr>`).join("")}</tbody>
+      </table>
+      <h3 class="label" style="margin-top:20px;">Prushto (Backward) Latta</h3>
+      <table>
+        <thead><tr><th>Planet</th><th>Latta On</th></tr></thead>
+        <tbody>${Object.entries(LATTA.prushto).map(([p,n])=>`<tr><td>${p}</td><td>${n}th Nakshatra</td></tr>`).join("")}</tbody>
+      </table>
+    </div>
+    <div class="tool">
+      <h3 class="label">Try it — find the Latta Nakshatra</h3>
+      <div class="tool-row">
+        <div class="field">
+          <label>Planet</label>
+          <select id="latta-planet"></select>
+        </div>
+        <div class="field">
+          <label>Currently transiting</label>
+          <select id="latta-start"></select>
+        </div>
+      </div>
+      <div class="result" id="latta-result"></div>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL: ANGA PHALA ================== */
+const angaPanel = `
+<section class="panel" id="panel-anga">
+  <div class="kicker">Method 5</div>
+  <h2 class="title">Nakshatra Anga Phala</h2>
+  <p class="lede">The 27 Nakshatras rule over different parts (Anga) of the human body. Count from the birth Nakshatra to the transiting Nakshatra to find the ruling limb and its result.</p>
+  <div class="card navy" style="margin-bottom:22px;">
+    <h3 class="label">Worked example</h3>
+    <p>If <b>Moola</b> is the Janma Nakshatra and Jupiter transits <b>Shatabhisha</b>, count from Moola to Shatabhisha — the count is <b>6</b>, which falls under the Mercury/Jupiter/Venus table as <b>Face</b>, giving the result: <b>Gain of wealth</b>. These results are subsidiary to the native's natal horoscope and Dasha tendencies.</p>
+  </div>
+  <div class="tool">
+    <h3 class="label">Try it — find the Anga Phala</h3>
+    <div class="tool-row">
+      <div class="field">
+        <label>Planet group</label>
+        <select id="anga-group">
+          <option>Sun</option>
+          <option>Moon</option>
+          <option>Saturn, Rahu, Ketu</option>
+          <option>Mercury, Jupiter, Venus</option>
+          <option>Saturn, Rahu, Ketu (Alternate)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Janma Nakshatra (birth)</label>
+        <select id="anga-birth"></select>
+      </div>
+      <div class="field">
+        <label>Transiting Nakshatra</label>
+        <select id="anga-transit"></select>
+      </div>
+    </div>
+    <div class="result" id="anga-result"></div>
+  </div>
+</section>`;
+
+document.getElementById("panels").innerHTML = vedhaPanel + shalakhaPanel + typesPanel + taraPanel + lattaPanel + angaPanel;
+
+/* ================== TAB SWITCHING ================== */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("panel-"+btn.dataset.target).classList.add("active");
+  });
+});
+
+/* ================== POPULATE SELECTS ================== */
+document.getElementById("vedha-planet").innerHTML = Object.keys(VEDHA).map(p=>`<option>${p}</option>`).join("");
+document.getElementById("vedha-start").innerHTML = nakOptions(0);
+document.getElementById("latta-planet").innerHTML = Object.keys(LATTA.puro).concat(Object.keys(LATTA.prushto)).map(p=>`<option>${p}</option>`).join("");
+document.getElementById("latta-start").innerHTML = nakOptions(0);
+document.getElementById("tara-birth").innerHTML = nakOptions(0);
+document.getElementById("tara-transit").innerHTML = nakOptions(0);
+document.getElementById("anga-birth").innerHTML = nakOptions(0);
+document.getElementById("anga-transit").innerHTML = nakOptions(0);
+
+/* ================== INTERACTIVE LOGIC ================== */
+function updateVedha(){
+  const planet = document.getElementById("vedha-planet").value;
+  const start = document.getElementById("vedha-start").value;
+  const v = VEDHA[planet];
+  const t1 = nakAt(start, v.n[0]);
+  const t2 = nakAt(start, v.n[1]);
+  document.getElementById("vedha-result").innerHTML =
+    `<span class="big">${t1} &amp; ${t2}</span>
+     If ${v.by.split(", ")[0]}${v.by.includes(",")?" or another planet from ("+v.by+")":""} transits <b style="color:#fff">${t1}</b> or <b style="color:#fff">${t2}</b>, it causes Vedha on ${planet}'s transit through <b style="color:#fff">${start}</b>.
+     <div class="muted">Counted as the ${v.n[0]}th and ${v.n[1]}th Nakshatra from ${start}.</div>`;
+}
+["vedha-planet","vedha-start"].forEach(id=>document.getElementById(id).addEventListener("change",updateVedha));
+updateVedha();
+
+function updateLatta(){
+  const planet = document.getElementById("latta-planet").value;
+  const start = document.getElementById("latta-start").value;
+  let n, dir, target;
+  if(LATTA.puro[planet]!==undefined){ n=LATTA.puro[planet]; dir="Puro (Forward)"; target=nakAt(start,n); }
+  else{ n=LATTA.prushto[planet]; dir="Prushto (Backward)"; target=nakBack(start,n); }
+  document.getElementById("latta-result").innerHTML =
+    `<span class="big">${target}</span>
+     ${dir} Latta for ${planet}, counted ${n} Nakshatras from ${start}. When ${planet} reaches <b style="color:#fff">${target}</b>, its auspicious results are obstructed.`;
+}
+["latta-planet","latta-start"].forEach(id=>document.getElementById(id).addEventListener("change",updateLatta));
+updateLatta();
+
+function updateTara(){
+  const birth = document.getElementById("tara-birth").value;
+  const transit = document.getElementById("tara-transit").value;
+  const count = countFrom(birth, transit);
+  const catIdx = (count-1)%9;
+  const t = TARA_SEQ[catIdx];
+  document.getElementById("tara-result").innerHTML =
+    `<span class="big">${t.cat} <span class="tag ${t.res.toLowerCase()}" style="margin-left:8px;">${t.res}</span></span>
+     Counting from ${birth} to ${transit} gives a count of <b style="color:#fff">${count}</b> (position ${catIdx+1} in the 9-fold cycle).`;
+}
+["tara-birth","tara-transit"].forEach(id=>document.getElementById(id).addEventListener("change",updateTara));
+updateTara();
+
+function updateAnga(){
+  const group = document.getElementById("anga-group").value;
+  const birth = document.getElementById("anga-birth").value;
+  const transit = document.getElementById("anga-transit").value;
+  const count = countFrom(birth, transit);
+  const r = ANGA[group](count);
+  document.getElementById("anga-result").innerHTML =
+    `<span class="big">${r.limb} — ${r.res}</span>
+     Counting from ${birth} to ${transit} for the <b style="color:#fff">${group}</b> group gives a count of <b style="color:#fff">${count}</b>.`;
+}
+["anga-group","anga-birth","anga-transit"].forEach(id=>document.getElementById(id).addEventListener("change",updateAnga));
+updateAnga();
+
+/* ================== SAPTHA SHALAKHA GRID ================== */
+(function(){
+  const svg = document.getElementById("shalakha-svg");
+  const cols=7, rows=5, w=500,h=300, padX=30, padY=30;
+  const cw=(w-2*padX)/(cols-1), ch=(h-2*padY)/(rows-1);
+  let s = "";
+  for(let j=0;j<rows;j++){
+    s += `<line class="gline" x1="${padX}" y1="${padY+j*ch}" x2="${w-padX}" y2="${padY+j*ch}"/>`;
+  }
+  for(let i=0;i<cols;i++){
+    s += `<line class="gline" x1="${padX+i*cw}" y1="${padY}" x2="${padX+i*cw}" y2="${h-padY}"/>`;
+  }
+  for(let i=0;i<cols-1;i++){
+    for(let j=0;j<rows-1;j++){
+      const x0=padX+i*cw, y0=padY+j*ch;
+      s += `<line class="gline" x1="${x0}" y1="${y0}" x2="${x0+cw}" y2="${y0+ch}"/>`;
+      s += `<line class="gline" x1="${x0}" y1="${y0+ch}" x2="${x0+cw}" y2="${y0}"/>`;
+    }
+  }
+  const labels=[
+    {c:1,r:1,name:"Ashwini",color:"#b8892b"},
+    {c:3,r:2,name:"Abhijit",color:"#b8892b"},
+    {c:5,r:3,name:"Swathi",color:"#b8892b"},
+    {c:3,r:1,name:"Rohini",color:"#9b2226"}
+  ];
+  labels.forEach(p=>{
+    const x=padX+p.c*cw, y=padY+p.r*ch;
+    s += `<circle class="gpoint" cx="${x}" cy="${y}" r="5.5" fill="${p.color}"><title>${p.name}</title></circle>`;
+    s += `<text class="glabel" x="${x}" y="${y-11}" text-anchor="middle">${p.name}</text>`;
+  });
+  svg.innerHTML = s;
+})();
+</script>
+</body>
+</html>
