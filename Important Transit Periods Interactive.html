@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Important Transit Periods — ICAS Bengaluru-2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Spectral:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1f3f;
+    --navy-dark:#071630;
+    --gold:#b8892b;
+    --gold-light:#e8d9b5;
+    --cream:#f7f3e9;
+    --cream-line:#e4d9bc;
+    --ink:#1c1c1c;
+    --muted:#5a5a5a;
+    --good:#2e6b3e;
+    --bad:#9b2226;
+    --mixed:#a6702b;
+    --paper:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--navy);
+    font-family:'Spectral',serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:1180px;
+    margin:0 auto;
+    background:var(--paper);
+    min-height:100vh;
+    box-shadow:0 0 60px rgba(0,0,0,0.35);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 20%, rgba(184,137,43,0.18), transparent 45%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color:#fff;
+    padding:64px 48px 52px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-family:'Jost',sans-serif;
+    letter-spacing:.22em;
+    font-size:12.5px;
+    color:var(--gold);
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:clamp(38px,5.6vw,62px);
+    margin:10px 0 6px;
+    line-height:1.03;
+  }
+  .hero p.sub{
+    font-family:'Jost',sans-serif;
+    font-size:15px;
+    color:#c9c9d6;
+    max-width:660px;
+    margin:0;
+    letter-spacing:.01em;
+  }
+  .hero .chakra{
+    position:absolute;
+    right:-40px; top:50%;
+    transform:translateY(-50%);
+    width:260px; height:260px;
+    opacity:0.9;
+  }
+
+  /* ---------- NAV ---------- */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:2px;
+    background:var(--navy-dark);
+    padding:0 40px;
+  }
+  .tab-btn{
+    font-family:'Jost',sans-serif;
+    font-size:13.5px;
+    letter-spacing:.03em;
+    font-weight:500;
+    color:#9fa8c2;
+    background:transparent;
+    border:none;
+    padding:16px 18px;
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+    transition:.18s ease;
+    white-space:nowrap;
+  }
+  .tab-btn .n{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    color:var(--gold);
+    margin-right:7px;
+  }
+  .tab-btn:hover{ color:#fff; }
+  .tab-btn.active{
+    color:#fff;
+    border-bottom:3px solid var(--gold);
+    background:rgba(184,137,43,0.08);
+  }
+
+  /* ---------- PANELS ---------- */
+  .panel{ display:none; padding:44px 48px 70px; animation:fade .35s ease; }
+  .panel.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+  .kicker{
+    font-family:'Jost',sans-serif;
+    font-size:12px;
+    letter-spacing:.2em;
+    font-weight:600;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 6px;
+  }
+  h2.title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:36px;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  h3.subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    font-size:23px;
+    color:var(--navy);
+    margin:34px 0 12px;
+  }
+  h3.subtitle:first-of-type{ margin-top:0; }
+  p.lede{
+    font-family:'Spectral',serif;
+    font-style:italic;
+    font-size:16.5px;
+    color:var(--muted);
+    max-width:840px;
+    margin:0 0 30px;
+    line-height:1.5;
+  }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:start; }
+  @media (max-width:900px){ .grid2, .grid3{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--cream);
+    border:1px solid var(--cream-line);
+    border-radius:10px;
+    padding:22px 24px;
+    margin-bottom:20px;
+  }
+  .card.navy{ background:var(--navy); color:#fff; }
+  .card h4.label{
+    font-family:'Jost',sans-serif;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 12px;
+    font-weight:600;
+  }
+  .card p{ line-height:1.58; font-size:15px; margin:0 0 12px; }
+  .card p:last-child{ margin-bottom:0; }
+  .card b{ color:var(--navy); }
+  .card.navy b{ color:var(--gold); }
+
+  .bullets{ list-style:none; margin:0; padding:0; }
+  .bullets li{
+    position:relative; padding-left:20px; margin-bottom:14px;
+    line-height:1.58; font-size:15px;
+  }
+  .bullets li::before{
+    content:''; position:absolute; left:0; top:8px;
+    width:7px; height:7px; border-radius:50%; background:var(--gold);
+  }
+  .bullets.sub li::before{ background:var(--navy); width:5px; height:5px; top:9px; }
+
+  table{ width:100%; border-collapse:collapse; font-family:'Spectral',serif; font-size:14px; margin-bottom:4px; }
+  thead th{
+    background:var(--navy); color:#fff;
+    font-family:'Jost',sans-serif; font-weight:600; font-size:12.5px;
+    letter-spacing:.02em;
+    text-align:left; padding:10px 12px;
+  }
+  tbody td{ padding:9px 12px; border-bottom:1px solid var(--cream-line); }
+  tbody tr:nth-child(even){ background:#fbf8f1; }
+
+  /* ---------- Accordion ---------- */
+  .accordion-item{
+    background:var(--cream);
+    border:1px solid var(--cream-line);
+    border-radius:10px;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .accordion-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 22px;
+    cursor:pointer;
+    font-family:'Jost',sans-serif;
+    font-weight:600; font-size:15px; color:var(--navy);
+  }
+  .accordion-head .phase-tag{
+    font-family:'Jost',sans-serif; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:#fff; background:var(--gold);
+    padding:3px 10px; border-radius:20px; margin-right:12px;
+  }
+  .accordion-head .chev{
+    font-family:'Jost',sans-serif; color:var(--gold); font-size:18px;
+    transition:transform .2s ease;
+  }
+  .accordion-item.open .chev{ transform:rotate(180deg); }
+  .accordion-body{
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    padding:0 22px;
+  }
+  .accordion-item.open .accordion-body{ padding:0 22px 18px; }
+  .accordion-body p{ font-size:14.5px; line-height:1.6; color:var(--ink); margin:0; }
+
+  /* ---------- Degree strip ---------- */
+  .degree-strip{
+    display:flex; border-radius:8px; overflow:hidden; margin:18px 0 10px;
+    font-family:'Jost',sans-serif; font-size:12px; font-weight:600; color:#fff;
+  }
+  .degree-strip .seg{
+    flex:1; text-align:center; padding:14px 6px; cursor:pointer;
+    transition:.15s;
+  }
+  .degree-strip .seg:nth-child(1){ background:#3a4e72; }
+  .degree-strip .seg:nth-child(2){ background:var(--gold); }
+  .degree-strip .seg:nth-child(3){ background:#6b4a1e; }
+  .degree-strip .seg.active{ box-shadow:inset 0 0 0 3px rgba(255,255,255,0.6); }
+  .degree-detail{
+    background:var(--navy); color:#fff; border-radius:8px;
+    padding:16px 20px; font-size:14.5px; line-height:1.6;
+  }
+  .degree-detail b{ color:var(--gold); }
+
+  footer{
+    background:var(--navy-dark); color:#8e9bb8;
+    font-family:'Jost',sans-serif; font-size:11.5px;
+    padding:20px 48px; display:flex; justify-content:space-between;
+  }
+
+  ::selection{ background:var(--gold-light); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">ICAS · Bengaluru-2 Malleshwaram Chapter · Topic 5</div>
+    <h1>Important Transit Periods</h1>
+    <p class="sub">A classroom companion to the slow-moving planets — Jupiter, Saturn, Rahu & Ketu — and the transit periods that shape a lifetime: Sade Sathi, Ashtama Shani, Ardhashtama Shani, and Ashtakavarga in Transits.</p>
+    <svg class="chakra" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#3a4e72" stroke-width="1"/>
+      <circle cx="100" cy="100" r="64" fill="none" stroke="#b8892b" stroke-width="1.2"/>
+      <circle cx="100" cy="100" r="38" fill="none" stroke="#3a4e72" stroke-width="1"/>
+      <line x1="10" y1="100" x2="190" y2="100" stroke="#3a4e72" stroke-width="1"/>
+      <line x1="100" y1="10" x2="100" y2="190" stroke="#3a4e72" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" id="tabs"></div>
+
+  <!-- PANELS -->
+  <div id="panels"></div>
+
+  <footer>
+    <span>ICAS Bengaluru-2 · Malleshwaram Chapter</span>
+    <span>Compiled for classroom instruction — Jyotisha Praveena course</span>
+  </footer>
+</div>
+
+<script>
+/* ================== SECTIONS / TABS ================== */
+const SECTIONS = [
+  {id:"slow", num:"01", label:"Slow-Moving Planets"},
+  {id:"sadesathi", num:"02", label:"Sade Sathi"},
+  {id:"ashtama", num:"03", label:"Ashtama Shani"},
+  {id:"ardhashtama", num:"04", label:"Ardhashtama Shani"},
+  {id:"ashtakavarga", num:"05", label:"Ashtakavarga in Transits"},
+  {id:"doubletriple", num:"06", label:"Double & Triple Transit"}
+];
+
+document.getElementById("tabs").innerHTML = SECTIONS.map((s,i)=>
+  `<button class="tab-btn ${i===0?'active':''}" data-target="${s.id}"><span class="n">${s.num}</span>${s.label}</button>`
+).join("");
+
+/* ================== PANEL 1: SLOW-MOVING PLANETS ================== */
+const slowPanel = `
+<section class="panel active" id="panel-slow">
+  <div class="kicker">Foundation</div>
+  <h2 class="title">Importance of Slow-Moving Planets</h2>
+  <p class="lede">In Vedic astrology, the slow-moving planets — Saturn, Jupiter, and the lunar nodes Rahu and Ketu — are considered the primary architects of our destiny.</p>
+
+  <div class="card">
+    <ul class="bullets">
+      <li>Their slow pace across the zodiac has a profound and lasting influence. Unlike their faster-moving counterparts that govern the day-to-day fluctuations of life, these planets are the cosmic forces that sculpt the major chapters, significant transformations, and the overarching karmic narrative of one's existence.</li>
+      <li>The significance of their slow transit lies in the duration of their impact. A planet that remains in a single zodiac sign for a longer duration exerts a deep, sustained pressure on the areas of life represented by that sign and the house it occupies in a birth chart.</li>
+      <li>This extended influence allows for the gradual unfolding of complex life lessons, the maturation of character, and the fructification of long-term karmic consequences.</li>
+      <li>By understanding their slow, deliberate influence, we gain insight into the larger purpose of our existence — the lessons we are here to learn, the strengths we are meant to build, and the ultimate destiny we are striving to fulfil.</li>
+    </ul>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h4 class="label">Saturn — the karmic taskmaster</h4>
+      <p>The most revered and feared of all the planets. With a transit period of approximately 2.5 years per sign, it takes nearly 30 years to complete a full circle through the zodiac — ensuring Saturn's lessons of discipline, responsibility, perseverance, and patience are deeply ingrained.</p>
+      <p>Saturn's slow movement is crucial to its role as the great karmic teacher. It doesn't rush to reward or punish; instead, it meticulously brings to the forefront the consequences of our past actions.</p>
+      <p>Challenges such as the infamous 'Sade Sati' are not meant to be punitive but corrective — slowing down progress and forcing introspection so we build strong foundations, face our fears, and develop unwavering resilience. Structures built during a Saturnine period endure precisely because they have been tested by time and adversity.</p>
+    </div>
+    <div class="card">
+      <h4 class="label">Jupiter — the beacon of wisdom</h4>
+      <p>In contrast to Saturn's restrictive nature, Jupiter, or 'Guru', is the planet of expansion, wisdom, fortune, and grace. It spends about a year in each zodiac sign, bringing growth, opportunity, and optimism to the areas it influences.</p>
+      <p>Jupiter's slow, year-long transit through a house allows for significant and noticeable expansion in that domain — for instance, its transit through the house of career can bring a substantial promotion or a shift in life purpose that unfolds over the entire year. Its influence on the house of relationships can foster deep, meaningful connections with lasting impact.</p>
+      <p>Jupiter's extended stay provides ample time to absorb its wisdom, expand our knowledge, and align with a higher purpose. The opportunities that arise are not fleeting; they are foundational, setting the stage for long-term prosperity and fulfillment.</p>
+    </div>
+    <div class="card">
+      <h4 class="label">Rahu & Ketu — the karmic axis</h4>
+      <p>Rahu &amp; Ketu transit retrograde, taking approximately 18 months to move through a single sign. This slow, 1.5-year transit of the Rahu-Ketu axis across a particular pair of houses is profoundly significant — it dictates the soul's evolutionary path in the current lifetime.</p>
+      <p>Rahu, the North Node of the Moon, represents our insatiable desires, worldly ambitions, and the areas of life we are destined to explore with great intensity. Its long transit through a house amplifies our focus and cravings related to that house's significations, pushing us out of our comfort zones.</p>
+      <p>Ketu, the South Node, signifies our past-life masteries, inherent talents, and the areas from which we need to detach. Its extended stay can bring disillusionment or a spiritual urge to let go, encouraging introspection and liberation. The push and pull between Rahu's forward-looking ambition and Ketu's backward-glancing detachment is a central theme in our spiritual evolution — a process that requires the long, sustained influence that only a slow transit can provide.</p>
+    </div>
+  </div>
+</section>`;
+
+/* ================== PANEL 2: SADE SATHI ================== */
+const sadeSathiPanel = `
+<section class="panel" id="panel-sadesathi">
+  <div class="kicker">Method 1</div>
+  <h2 class="title">Sade Sathi</h2>
+  <p class="lede">Saturn's transit over the 12th, 1st and 2nd houses from Janma Rashi (the sign where the Moon is posited in the birth chart) is considered an in-auspicious period, infamously known as Sade Sathi — often portrayed as a period of hardship and struggle.</p>
+
+  <div class="card">
+    <p>Sade Sathi is a period of 7.5 years of Saturn's transit &amp; impact over Janma Rashi. Moon represents the mind &amp; emotions; Saturn represents karma, discipline, justice, and reality. Therefore, Sade Sati is a period where slow-moving Saturn casts its direct influence on the most sensitive aspect of our being — our mind &amp; emotions.</p>
+  </div>
+
+  <h3 class="subtitle">The Three Phases</h3>
+  <p style="font-size:14.5px; color:var(--muted); margin:-4px 0 16px;">Click a phase to read its effects.</p>
+  <div id="sadesathi-accordion"></div>
+
+  <h3 class="subtitle">Recurrence &amp; Lagna Exceptions</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4 class="label">How often it occurs</h4>
+      <p>Sade Sati normally occurs thrice during one's lifetime.</p>
+      <ul class="bullets sub">
+        <li><b>First cycle</b> — influences are experienced by parents or the place where the child stays.</li>
+        <li><b>Second cycle</b> — influences are experienced by the native himself, in the family, and on professional or domestic life.</li>
+        <li><b>Third cycle</b> — influences are experienced by children and the health of the native.</li>
+      </ul>
+    </div>
+    <div class="card navy">
+      <h4 class="label">Lagna exceptions</h4>
+      <p>For natives with <b>Vrushabha</b> or <b>Tula</b> Lagna, Saturn becomes Yoga Karaka, and with <b>Makara</b> and <b>Kumbha</b> Lagna it becomes Lagna Lord — in these cases, Sade Sati's in-auspicious results are less profound.</p>
+      <p>For interpreting Saturn's transit results, one should take all predictive principles into consideration before pronouncing the results.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4 class="label">The purpose of Sade Sati</h4>
+    <p>While the challenges of Sade Sati are undeniable, its purpose is not to punish but to purify. It is a period where the karmic account is balanced. Saturn brings the consequences of past actions to the forefront. Those who have lived a life of discipline, integrity, and hard work may find this period to be one of significant achievement and recognition.</p>
+    <p>Positive outcomes of a well-navigated Sade Sati include increased discipline and responsibility, greater humility and empathy, inner strength and resilience, and spiritual awakening.</p>
+  </div>
+
+  <h3 class="subtitle">Exact Degrees of Natal Moon ± 45°</h3>
+  <div class="card">
+    <p>This is a precise, mathematical method of calculating Sade Sati duration. While most people calculate Sade Sati based on whole astrological signs, the 45-degree rule is used by advanced astrologers to pinpoint the exact astronomical window when the psychological weight of Saturn actually begins and ends.</p>
+    <p>Saturn takes roughly 2.5 years to transit a 30-degree zodiac sign. Therefore, to travel for 7.5 years, Saturn must cover an arc of exactly 90° (2.5 × 3 = 7.5 years, and 30° × 3 = 90°).</p>
+    <p>Sade Sati officially begins the moment transiting Saturn reaches exactly 45° behind your Natal Moon, and it ends exactly 45° ahead of your Natal Moon. This 90° arc is divided into three phases to study the effects of Sade Sati.</p>
+  </div>
+  <div class="degree-strip" id="degree-strip">
+    <div class="seg active" data-d="approach">−45° to −15°<br>Approach</div>
+    <div class="seg" data-d="peak">−15° to +15°<br>Peak</div>
+    <div class="seg" data-d="departure">−15° to +15°<br>Departure</div>
+  </div>
+  <div class="degree-detail" id="degree-detail"></div>
+</section>`;
+
+/* ================== PANEL 3: ASHTAMA SHANI ================== */
+const ashtamaPanel = `
+<section class="panel" id="panel-ashtama">
+  <div class="kicker">Method 2</div>
+  <h2 class="title">Ashtama Shani (Kantaka Shani)</h2>
+  <p class="lede">"Ashtama" means "eighth" — Ashtama Shani occurs when Saturn transits through the 8th house from the Natal Moon, lasting approximately 2.5 years, the time Saturn takes to move through a single zodiac sign.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4 class="label">The 8th house</h4>
+      <p>The 8th house is a dusthana. It governs longevity, sudden events, deep-seated anxieties, chronic illnesses, hidden treasures, inheritances and profound transformations. When Saturn — the planet of karma, discipline, limitation, and reality — moves through this highly sensitive house, it activates these aspects in an individual's life, often with unexpected results. This period is considered the most challenging transit of Saturn after Sade Sati.</p>
+    </div>
+    <div class="card navy">
+      <h4 class="label">Effects experienced</h4>
+      <p>The influence of Ashtama Shani is both intense and pervasive. A native undergoing this transit may experience sudden obstacles and frustration, increased mental stress and anxiety, health concerns, financial instability, and relationship and family discord.</p>
+    </div>
+  </div>
+
+  <h3 class="subtitle">Houses activated by aspect</h3>
+  <p style="font-size:14.5px; color:var(--muted); margin:-4px 0 16px;">From its position in the 8th house, Saturn aspects three other houses, further extending its influence.</p>
+  <table>
+    <thead><tr><th>House aspected</th><th>Aspect</th><th>Significations affected</th></tr></thead>
+    <tbody>
+      <tr><td>10th house</td><td>3rd aspect</td><td>House of profession — creating significant challenges at the workplace.</td></tr>
+      <tr><td>2nd house</td><td>7th aspect</td><td>House of wealth &amp; family — influencing wealth, family, and speech.</td></tr>
+      <tr><td>5th house</td><td>10th aspect</td><td>House of intellect &amp; children — influencing children, education, speculation and skills.</td></tr>
+    </tbody>
+  </table>
+</section>`;
+
+/* ================== PANEL 4: ARDHASHTAMA SHANI ================== */
+const ardhashtamaPanel = `
+<section class="panel" id="panel-ardhashtama">
+  <div class="kicker">Method 3</div>
+  <h2 class="title">Ardhashtama Shani</h2>
+  <p class="lede">Ardha means "half," and Ashtama means "eighth." So Ardhashtama means "half of the eighth," i.e. fourth. Ardhashtama Shani occurs when Saturn transits through the 4th house from the Natal Moon, for approximately 2.5 years.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4 class="label">The 4th house</h4>
+      <p>The 4th house is called Sukha Sthana and relates to home, domestic peace, vehicles, property, comfort and mother. When Saturn transits here, it influences these areas — the native might experience mental tension, worries, and a feeling of instability at home.</p>
+    </div>
+    <div class="card navy">
+      <h4 class="label">Extended influence</h4>
+      <p>From its position in the 4th house, Saturn aspects three other houses, further extending its influence — touching health, career, and the mind itself.</p>
+    </div>
+  </div>
+
+  <h3 class="subtitle">Houses activated by aspect</h3>
+  <table>
+    <thead><tr><th>House aspected</th><th>Aspect</th><th>Significations affected</th></tr></thead>
+    <tbody>
+      <tr><td>6th house</td><td>3rd aspect</td><td>House of diseases &amp; enemies — creating health issues, fear of enemies, worries of debts.</td></tr>
+      <tr><td>10th house</td><td>7th aspect</td><td>House of profession — creating significant challenges at the workplace.</td></tr>
+      <tr><td>1st house</td><td>10th aspect</td><td>House of Natal Moon (mind and emotions) — influencing emotional and psychological turmoil, life changes, health concerns, pressure and responsibility.</td></tr>
+    </tbody>
+  </table>
+</section>`;
+
+/* ================== PANEL 5: ASHTAKAVARGA IN TRANSITS ================== */
+const ashtakavargaPanel = `
+<section class="panel" id="panel-ashtakavarga">
+  <div class="kicker">Method 4</div>
+  <h2 class="title">Ashtakavarga in Transits</h2>
+  <p class="lede">A planet in transit in a sign offers results based on three layers of reference.</p>
+
+  <div class="grid3">
+    <div class="card">
+      <h4 class="label">1 — Karakatva</h4>
+      <p>Based on its natural signification (Karakatva). Example: Jupiter for wealth, wisdom, etc.</p>
+    </div>
+    <div class="card">
+      <h4 class="label">2 — Location from Lagna</h4>
+      <p>Based on its location from Lagna at the time of transit. Example: Jupiter in Cancer denotes the 3rd house from Taurus Lagna, which indicates matters related to siblings, etc.</p>
+    </div>
+    <div class="card">
+      <h4 class="label">3 — Location from Kakshya Lord</h4>
+      <p>Based on its location from the Kakshya Lord's natal position as reference. Example: Jupiter transiting in Cancer, in Jupiter's own Kakshya, which is the 4th house from where Jupiter is posited in the natal chart — hence matters related to the 4th house, like property, are positively influenced.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <ul class="bullets">
+      <li>When the Transiting Planet and Kakshya Lord are friends, the results are good.</li>
+      <li>The Transiting Planet yields increasingly good results if it visits its exaltation / moola trikona / own / friend's sign — the same holds true for its Kakshya.</li>
+      <li>Extension of transit principles of Kakshya to Dasha Lord &amp; Bhukti Lord is very useful.</li>
+      <li>For precise event timing, identify the Dasha Lord's current Kakshya and verify whether its lord has contributed a benefic point in the transited sign.</li>
+    </ul>
+  </div>
+
+  <h3 class="subtitle">Analysis of Sade Sathi using Ashtakavarga</h3>
+  <div class="card navy">
+    <p>To judge the result of Saturn during Sade Sathi, one must look at Saturn's PAV.</p>
+    <p>If Saturn is transiting through a Kakshya whose lord has contributed a benefic point in Saturn's BAV for that specific sign, the results will be benefic. If the lord has not contributed a benefic point, the results will be malefic.</p>
+    <p>Since Saturn transits one sign for ~2.5 years (30 months), it spends about 3 to 4 months in each of the 8 Kakshyas. The total duration of Sade Sathi is 7.5 years (90 months), which makes Saturn transit through 24 Kakshyas.</p>
+    <p>The result of the Sade Sathi period, whether benefic or malefic, depends on the number of benefic Kakshyas through which Saturn transits — the more benefic Kakshyas, the more benefic the Sade Sati period will be.</p>
+  </div>
+</section>`;
+
+/* ================== PANEL 6: DOUBLE & TRIPLE TRANSIT ================== */
+const doubleTriplePanel = `
+<section class="panel" id="panel-doubletriple">
+  <div class="kicker">Compound Effects</div>
+  <h2 class="title">Double &amp; Triple Transit Effects</h2>
+  <p class="lede">When more than one slow-moving planet activates the same point in a chart at the same time, the resulting events intensify.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4 class="label">Double Transit Effect</h4>
+      <p>The "Double Transit" is a powerful predictive technique used to time major life events. It specifically refers to the simultaneous influence of both Jupiter and Saturn on the same house or planetary position in a natal chart.</p>
+      <p>When these two slow-moving planets both aspect or transit over the same point in a chart, that area of life is said to be activated — making it the focal point for significant, life-altering events.</p>
+    </div>
+    <div class="card navy">
+      <h4 class="label">Triple Transit Effect</h4>
+      <p>The Triple Transit effect occurs when three slow-moving planets simultaneously influence the same house or planetary position in a natal chart.</p>
+      <p>While the Double Transit (Jupiter and Saturn) is the primary trigger for major life events, the Triple Transit adds a third planet, which is almost always one of the nodes — Rahu or Ketu.</p>
+      <p>When these three karmic planets all aspect or transit over the same house, the events related to that house are brought to the forefront with an incredible intensity that often feels "fated" or "destined."</p>
+    </div>
+  </div>
+</section>`;
+
+document.getElementById("panels").innerHTML = slowPanel + sadeSathiPanel + ashtamaPanel + ardhashtamaPanel + ashtakavargaPanel + doubleTriplePanel;
+
+/* ================== TAB SWITCHING ================== */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("panel-"+btn.dataset.target).classList.add("active");
+  });
+});
+
+/* ================== SADE SATHI ACCORDION ================== */
+const PHASES = [
+  {
+    tag:"Phase 1 · 2.5 yrs",
+    title:"The Rising — Saturn in the 12th house",
+    body:"As Saturn transits the 12th house (house of losses, expenses, isolation, and the subconscious mind) from the Natal Moon, the native may experience a sense of unease and unforeseen challenges, financial pressure and unexpected expenses, mental anxiety and sleep disturbances, isolation and distant journeys, etc."
+  },
+  {
+    tag:"Phase 2 · 2.5 yrs",
+    title:"The Peak — Saturn in the 1st house",
+    body:"As Saturn transits directly over the Natal Moon (1st house), the mind and emotions come under direct &amp; heavy influence of Saturn. The native may experience deep emotional and psychological turmoil, significant life changes, health concerns, and intense pressure and responsibility."
+  },
+  {
+    tag:"Phase 3 · 2.5 yrs",
+    title:"The Setting — Saturn in the 2nd house",
+    body:"As Saturn transits the 2nd house (represents family, wealth and speech), the intensity of the previous phase is lessened, but new challenges rise. The native may experience financial restructuring, family responsibilities and potential conflicts, learning the value of resources, etc."
+  }
+];
+
+document.getElementById("sadesathi-accordion").innerHTML = PHASES.map((p,i)=>`
+  <div class="accordion-item ${i===0?'open':''}" data-i="${i}">
+    <div class="accordion-head">
+      <span><span class="phase-tag">${p.tag}</span>${p.title}</span>
+      <span class="chev">⌄</span>
+    </div>
+    <div class="accordion-body"><p>${p.body}</p></div>
+  </div>
+`).join("");
+
+function layoutAccordion(item){
+  const body = item.querySelector(".accordion-body");
+  if(item.classList.contains("open")){
+    body.style.maxHeight = body.scrollHeight + 40 + "px";
+  } else {
+    body.style.maxHeight = "0px";
+  }
+}
+document.querySelectorAll("#sadesathi-accordion .accordion-item").forEach(item=>{
+  item.querySelector(".accordion-head").addEventListener("click", ()=>{
+    item.classList.toggle("open");
+    layoutAccordion(item);
+  });
+  layoutAccordion(item);
+});
+
+/* ================== DEGREE STRIP ================== */
+const DEGREE_INFO = {
+  approach: "<b>−45° to −15° from the Moon</b> — This is an approach phase. Saturn is approaching the mind. This phase affects the physical environment, sleep, and causes gradual detachment from past comforts.",
+  peak: "<b>−15° to +15° from the Moon</b> — This is a peak phase. Saturn is sitting directly on the mind. This is the most intense, psychologically heavy period. It forces massive internal restructuring, maturity, and reality checks.",
+  departure: "<b>−15° to +15° from the Moon</b> — This is a departure phase. Saturn is walking away from the mind. The psychological pressure lifts, and you are left to deal with the material rebuilding of whatever Saturn restructured during the peak."
+};
+function updateDegree(key){
+  document.querySelectorAll("#degree-strip .seg").forEach(s=>s.classList.toggle("active", s.dataset.d===key));
+  document.getElementById("degree-detail").innerHTML = DEGREE_INFO[key];
+}
+document.querySelectorAll("#degree-strip .seg").forEach(seg=>{
+  seg.addEventListener("click", ()=>updateDegree(seg.dataset.d));
+});
+updateDegree("approach");
+</script>
+</body>
+</html>
